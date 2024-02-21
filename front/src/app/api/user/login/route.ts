@@ -20,7 +20,10 @@ export async function POST(req: Request) {
 
   if (user) {
     // 로그인 성공
-    return NextResponse.json({ message: "로그인 성공" }, { status: 200 });
+    return NextResponse.json(
+      { message: "로그인 성공", user_id: userId },
+      { status: 200 }
+    );
   } else {
     // 로그인 실패 - 에러 처리
     return NextResponse.json(

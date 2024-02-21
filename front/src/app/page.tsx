@@ -1,12 +1,20 @@
 "use client";
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { BiSolidCoffeeBean } from "react-icons/bi";
+import useUserIdStore from "./hooks/useUserInfo";
+
+interface Inputs {
+  username: string;
+}
 
 export default function Home() {
+  const router = useRouter();
+  const { setUser_id } = useUserIdStore();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
 
   async function handleLogin() {
     try {
@@ -25,19 +33,22 @@ export default function Home() {
           "Content-Type": "application/json",
         },
       });
-      // 응답 데이터 출력
-      console.log("응답 데이터:", response.data);
-      setMessage(response.data.message);
+      // 로그인 성공
+      setUser_id(response.data.user_id);
+      router.push("/setting/cross");
     } catch (error) {
       // 에러 처리
-      console.error("API 요청 에러:", error);
+      alert("id 또는 비밀번호를 확인해 주세요");
     }
   }
 
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-96">
-        <h1 className="text-3xl font-semibold mb-6">Login</h1>
+        <h1 className="text-3xl font-semibold mb-6 grid place-items-center">
+          <BiSolidCoffeeBean />
+          Coffee Spell
+        </h1>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -46,9 +57,6 @@ export default function Home() {
           className="space-y-4"
         >
           <div>
-            <label htmlFor="userId" className="block">
-              User ID:
-            </label>
             <input
               type="text"
               id="userId"
@@ -56,13 +64,11 @@ export default function Home() {
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
               required
+              placeholder="Input ID"
               className="w-full border border-gray-300 rounded-md px-4 py-2"
             />
           </div>
           <div>
-            <label htmlFor="password" className="block">
-              Password:
-            </label>
             <input
               type="password"
               id="password"
@@ -70,6 +76,7 @@ export default function Home() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              placeholder="Input Password"
               className="w-full border border-gray-300 rounded-md px-4 py-2"
             />
           </div>
@@ -83,4 +90,14 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+{
+  /*추가 요구사항
+  1. 로그아웃으로 이 페이지에 도달했을 경우,
+      뒤로가기로 다시 로그인 상태로 못돌아가게 방지
+  2. 이 페이지 이외의 모든 페이지들을 주소 접근으로 못들어가게 하기
+      => 시도할 경우 로그인 페이지로 강제이동
+  3. 로그인 시 받아온 user_id / user_pk 등을 공유 상태정리로 저장하기
+   */
 }
