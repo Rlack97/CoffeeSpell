@@ -1,3 +1,3 @@
-export default function kitchen() {
+export default function Income() {
   return <div>income page</div>;
 }

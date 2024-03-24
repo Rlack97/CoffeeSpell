@@ -4,7 +4,7 @@ import { BiSolidCoffeeBean } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import useUserIdStore from "@/app/hooks/useUserInfo";
 
-export default function cross() {
+export default function Cross() {
   const router = useRouter();
   const { user_id, setUser_id } = useUserIdStore();
 

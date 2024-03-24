@@ -21,7 +21,7 @@ interface Menu_send {
   ice: boolean;
 }
 
-export default function counter() {
+export default function Counter() {
   const router = useRouter();
   const { menuItems, setMenuItems } = useMenuStore();
   const webscoketRef = useRef<WebSocket | null>(null);
