@@ -16,7 +16,7 @@ export default function Home() {
   async function handleLogin() {
     try {
       // API 엔드포인트 URL
-      const apiUrl = "http://localhost:3000/api/user/login";
+      const apiUrl = "/api/user/login";
 
       // 로그인 데이터
       const data = {

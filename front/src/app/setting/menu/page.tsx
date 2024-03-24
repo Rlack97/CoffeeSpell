@@ -30,7 +30,7 @@ export default function Menu() {
 
   async function handleGetMenu() {
     try {
-      const apiUrl = "http://localhost:3000/api/menu";
+      const apiUrl = "/api/menu";
       const response = await axios.get(apiUrl);
       setMenuItems(response.data.menu);
     } catch (error) {
