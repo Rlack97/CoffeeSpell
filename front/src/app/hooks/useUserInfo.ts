@@ -8,7 +8,7 @@ interface IUseUserIdStore {
 
 const useUserIdStore = create(
   persist<IUseUserIdStore>(
-    (set, get) => ({
+    (set) => ({
       user_id: null,
       setUser_id: (userId: string | null) => set(() => ({ user_id: userId })),
     }),

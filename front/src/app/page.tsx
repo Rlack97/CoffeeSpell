@@ -3,12 +3,9 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { BiSolidCoffeeBean } from "react-icons/bi";
 import useUserIdStore from "./hooks/useUserInfo";
 
-interface Inputs {
-  username: string;
-}
+import { BiSolidCoffeeBean } from "react-icons/bi";
 
 export default function Home() {
   const router = useRouter();

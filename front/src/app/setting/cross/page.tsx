@@ -7,17 +7,15 @@ import useUserIdStore from "@/app/hooks/useUserInfo";
 export default function cross() {
   const router = useRouter();
   const { user_id, setUser_id } = useUserIdStore();
-  const clearUserIdStorage = useUserIdStore.persist.clearStorage;
 
   function logout() {
     if (window.confirm("로그아웃 하시겠습니까?")) {
+      localStorage.clear(); // 모든 로컬 스토리지 항목 삭제
+      router.push("/");
+      setUser_id("");
     } else {
       alert("취소합니다.");
-      return;
     }
-    router.push("/");
-    setUser_id("");
-    clearUserIdStorage();
   }
 
   return (
@@ -61,5 +59,3 @@ export default function cross() {
     </div>
   );
 }
-
-// 함수들에 다 이름 붙여서 쓸 것. 에러코드 난다.
