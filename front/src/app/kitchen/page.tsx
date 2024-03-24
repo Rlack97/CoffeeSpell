@@ -12,7 +12,7 @@ interface OrderItem {
   ice: boolean;
 }
 
-export default function kitchen() {
+export default function Kitchen() {
   const router = useRouter();
   const { orders, packing, addOrderItems, resetOrderItmes, deleteOrderItems } =
     useOrderStore();
