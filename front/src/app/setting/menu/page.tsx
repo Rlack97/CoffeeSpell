@@ -28,13 +28,11 @@ export default function Menu() {
     }
   }, []);
 
-  console.log(menuItems);
-
   async function handleGetMenu() {
     try {
       const apiUrl = "/api/menu";
       const response = await axios.get(apiUrl);
-      setMenuItems(response.data.rows);
+      setMenuItems(response.data);
     } catch (error) {
       console.error("에러 발생:", error);
     }

@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
     // 메뉴가 존재하지 않는 경우에도 그냥 빈 값을 전달
     // const menu = rows ?? [];
 
-    return NextResponse.json({ rows }, { status: 200 });
+    return NextResponse.json({ message: rows }, { status: 200 });
   } catch (error) {
     console.error("에러 발생:", error);
     return NextResponse.json(
