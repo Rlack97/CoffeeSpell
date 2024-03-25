@@ -7,10 +7,10 @@ export async function POST(req: Request) {
   const { userId, password } = body;
 
   // 사용자 검증
-  const user =
+  const { rows } =
     await sql`SELECT * FROM users WHERE user_id = ${userId} AND user_password = ${password}`;
 
-  if (user) {
+  if (rows.length == 1) {
     // 로그인 성공
     return NextResponse.json(
       { message: "로그인 성공", user_id: userId },
