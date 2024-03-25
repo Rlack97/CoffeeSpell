@@ -22,6 +22,8 @@ export default function Menu() {
   const [selectedMenu, setSelectedMenu] = useState<Menu | null>(null);
 
   useEffect(() => {
+    console.log("pageloaded");
+    console.log(menuItems);
     if (menuItems === null) {
       handleGetMenu();
       console.log("menu called");
