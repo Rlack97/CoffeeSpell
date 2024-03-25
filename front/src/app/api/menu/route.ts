@@ -9,7 +9,7 @@ export async function GET(req: Request) {
 
     return {
       status: 200,
-      body: { message: rows },
+      body: rows, // rows 그대로 반환
     };
   } catch (error) {
     console.error("에러 발생:", error);
