@@ -33,6 +33,7 @@ export default function Menu() {
       const apiUrl = "/api/menu";
       const response = await axios.get(apiUrl);
       setMenuItems(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error("에러 발생:", error);
     }
