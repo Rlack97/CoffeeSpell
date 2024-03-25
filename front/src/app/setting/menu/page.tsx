@@ -28,6 +28,8 @@ export default function Menu() {
     }
   }, []);
 
+  console.log(menuItems);
+
   async function handleGetMenu() {
     try {
       const apiUrl = "/api/menu";
