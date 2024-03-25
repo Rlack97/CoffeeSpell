@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { useState, useEffect, useRef } from "react";
+import { useState, useLayoutEffect, useRef } from "react";
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import useMenuStore from "@/app/hooks/useMenuInfo";
@@ -63,7 +63,7 @@ export default function Counter() {
     }
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // 웹소켓 연결
     if (webscoketRef.current == null) {
       const socketurl = "ws://localhost:8080";
