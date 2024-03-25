@@ -8,7 +8,7 @@ export async function POST(req: Request) {
 
   // 사용자 검증
   const user =
-    await sql`SELECT * FROM user WHERE user_id = ${userId} AND user_password = ${password}`;
+    await sql`SELECT * FROM users WHERE user_id = ${userId} AND user_password = ${password}`;
 
   if (user) {
     // 로그인 성공
