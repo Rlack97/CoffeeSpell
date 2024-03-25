@@ -1,22 +1,14 @@
-import sqlite3 from "sqlite3";
-import { open } from "sqlite";
+import { sql } from "@vercel/postgres";
 
-import type { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   const body = await req.json();
   const { userId, password } = body;
 
-  // SQLite3 데이터베이스 연결
-  const db = await open({
-    filename: "./db.sqlite",
-    driver: sqlite3.Database,
-  });
-
   // 사용자 검증
-  const query = "SELECT * FROM user WHERE user_id = ? AND user_password = ?";
-  const user = await db.get(query, [userId, password]);
+  const user =
+    await sql`SELECT * FROM user WHERE user_id = ${userId} AND user_password = ${password}`;
 
   if (user) {
     // 로그인 성공
