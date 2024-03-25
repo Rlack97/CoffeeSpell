@@ -3,9 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    const menu = await sql`SELECT * FROM menu`;
+    const result = await sql`SELECT * FROM menu`;
 
     // 메뉴가 존재하지 않는 경우에도 그냥 빈 값을 전달
+    const menu = result.rows ?? [];
+
     return NextResponse.json({ menu }, { status: 200 });
   } catch (error) {
     console.error("에러 발생:", error);
