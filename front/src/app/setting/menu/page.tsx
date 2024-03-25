@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import useMenuStore from "@/app/hooks/useMenuInfo";
 import MenuModal from "./menumodal";
@@ -21,7 +21,7 @@ export default function Menu() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState<Menu | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (menuItems === null) {
       handleGetMenu();
       console.log("menu called");
@@ -32,7 +32,6 @@ export default function Menu() {
     try {
       const apiUrl = "/api/menu";
       const response = await axios.get(apiUrl);
-      console.log(response.data.rows);
       setMenuItems(response.data.rows);
     } catch (error) {
       console.error("에러 발생:", error);
@@ -87,7 +86,7 @@ export default function Menu() {
         {["커피", "차", "음료", "음식"].map((category) => (
           <div key={category} className="mb-4">
             <h2 className="text-xl font-semibold mb-2">{category}</h2>
-            {/* <div className="flex flex-wrap ">
+            <div className="flex flex-wrap ">
               {handleFilterMenu(category).map((menu) => (
                 <button
                   key={menu.menu_id}
@@ -97,7 +96,7 @@ export default function Menu() {
                   {menu.menu_name}
                 </button>
               ))}
-            </div> */}
+            </div>
           </div>
         ))}
       </div>
