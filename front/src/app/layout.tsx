@@ -17,7 +17,6 @@ export default function RootLayout({
   return (
     <html lang="kr" className="h-full">
       <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-      <script> Pusher.logToConsole = true;</script>
       <body className={`font-inter ${inter.className}`}>
         <div>{children}</div>
       </body>
