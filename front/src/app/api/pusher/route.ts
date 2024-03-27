@@ -1,4 +1,4 @@
-import Pusher from "pusher";
+import Channels from "pusher";
 import { NextResponse } from "next/server";
 
 const { APP_ID, KEY, SECRET, CLUSTER } = process.env;
@@ -7,7 +7,7 @@ if (!APP_ID || !KEY || !SECRET || !CLUSTER) {
   throw new Error("환경 변수가 설정되지 않았습니다.");
 }
 
-const pusher = new Pusher({
+const pusher = new Channels({
   appId: APP_ID,
   key: KEY,
   secret: SECRET,
