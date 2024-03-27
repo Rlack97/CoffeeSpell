@@ -77,7 +77,7 @@ export default function Counter() {
     }
 
     // @ts-ignore
-    const pusher: Pusher = new Pusher(pusherKey, {
+    pusherRef.current = new Pusher(pusherKey, {
       cluster: pusherCluster,
     });
 
