@@ -69,6 +69,7 @@ export default function Counter() {
     const pusher = new Pusher("f7a5e3a12d42b498143b", {
       cluster: "ap3",
     });
+    console.log(pusher);
 
     // @ts-ignore
     const channel = pusher.subscribe("my-channel");
