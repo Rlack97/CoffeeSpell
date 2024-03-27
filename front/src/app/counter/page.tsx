@@ -111,7 +111,10 @@ export default function Counter() {
   }, []);
 
   // 주문 보내기
-  function sendMenuSelectionToServer(menuList: Menu_send[], packing: boolean) {
+  async function sendMenuSelectionToServer(
+    menuList: Menu_send[],
+    packing: boolean
+  ) {
     if (menuList.length == 0) {
       alert("메뉴를 선택하세요");
     } else if (pusherRef.current) {
@@ -121,11 +124,23 @@ export default function Counter() {
           menuList: menuList,
           packing: packing,
         };
-        pusherRef.current.trigger("my-channel", "my-event", sendData);
-        // 리스트 초기화
-        setReceipt(false);
-        setmenuList([]);
-        setPacking(false);
+        const apiUrl = "/api/pusher";
+
+        try {
+          // API 요청 보내기
+          const response = await axios.post(apiUrl, JSON.stringify(sendData), {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          // 리스트 초기화
+          setReceipt(false);
+          setmenuList([]);
+          setPacking(false);
+        } catch (error) {
+          console.error("API 요청 중 오류 발생:", error);
+        }
       } else {
         alert("취소했습니다");
       }
