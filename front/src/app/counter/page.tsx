@@ -66,18 +66,18 @@ export default function Counter() {
 
   useEffect(() => {
     // @ts-ignore
-    const pusher = new Pusher("f7a5e3a12d42b498143b", {
-      cluster: "ap3",
+    const channels = new Pusher(process.env.NEXT_PUBLIC_PUSHER_APP_KEY, {
+      cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
     });
-    console.log(pusher);
+    console.log(channels);
 
     // @ts-ignore
-    const channel = pusher.subscribe("my-channel");
+    const channel = channels.subscribe("channel-name");
     channel.bind("my-event", function (data: any) {
       alert(JSON.stringify(data));
     });
 
-    setUsePusher(pusher);
+    setUsePusher(channels);
 
     // if (webscoketRef.current == null) {
     //   const socketurl = "ws://localhost:8080";
@@ -345,6 +345,7 @@ export default function Counter() {
           </div>
         </div>
       )}
+      <script async src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
     </div>
   );
 }

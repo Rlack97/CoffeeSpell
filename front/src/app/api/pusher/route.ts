@@ -1,18 +1,23 @@
 import Pusher from "pusher";
 import { NextResponse } from "next/server";
 
+const { APP_ID, KEY, SECRET, CLUSTER } = process.env;
+
+if (!APP_ID || !KEY || !SECRET || !CLUSTER) {
+  throw new Error("환경 변수가 설정되지 않았습니다.");
+}
+
+const pusher = new Pusher({
+  appId: APP_ID,
+  key: KEY,
+  secret: SECRET,
+  cluster: CLUSTER,
+});
+
 export async function POST(req: Request) {
   if (req.method === "POST") {
     const body = await req.json();
     const message = body;
-
-    const pusher = new Pusher({
-      appId: "1777997",
-      key: "f7a5e3a12d42b498143b",
-      secret: "f844c04f3c979f0d9046",
-      cluster: "ap3",
-      useTLS: true,
-    });
 
     pusher
       .trigger("my-channel", "my-event", { message })
