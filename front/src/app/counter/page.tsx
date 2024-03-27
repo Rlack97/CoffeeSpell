@@ -72,7 +72,7 @@ export default function Counter() {
     console.log(channels);
 
     // @ts-ignore
-    const channel = channels.subscribe("channel-name");
+    const channel = channels.subscribe("my-channel");
     channel.bind("my-event", function (data: any) {
       alert(JSON.stringify(data));
     });
@@ -90,7 +90,7 @@ export default function Counter() {
 
     return () => {
       // @ts-ignore
-      pusher.unsubscribe("my-channel");
+      channel.unsubscribe("my-channel");
     };
   }, []);
 
