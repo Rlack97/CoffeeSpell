@@ -80,7 +80,7 @@ export default function Counter() {
     });
 
     // @ts-ignore
-    const channel = pusher.subscribe("my-channel");
+    const channel = pusherRef.current.subscribe("my-channel");
     channel.bind("my-event", function (data: any) {
       alert(JSON.stringify(data));
     });
