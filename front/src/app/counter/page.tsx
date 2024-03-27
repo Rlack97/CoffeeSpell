@@ -25,7 +25,7 @@ interface Menu_send {
 export default function Counter() {
   const router = useRouter();
   const { menuItems, setMenuItems } = useMenuStore();
-  const [pusher, setPusher] = useState<Pusher | null>(null);
+  const [usePusher, setUsePusher] = useState<Pusher | null>(null);
   const [menuList, setmenuList] = useState<Menu_send[]>([]);
   const [packing, setPacking] = useState(false);
 
@@ -65,22 +65,18 @@ export default function Counter() {
   }
 
   useEffect(() => {
-    // 웹소켓 연결
-    const pusherKey = "f7a5e3a12d42b498143b";
-    const pusherCluster = "ap3";
-
-    setPusher(
-      // @ts-ignore
-      new Pusher(pusherKey, {
-        cluster: pusherCluster,
-      })
-    );
+    // @ts-ignore
+    const pusher = new Pusher("f7a5e3a12d42b498143b", {
+      cluster: "ap3",
+    });
 
     // @ts-ignore
     const channel = pusher.subscribe("my-channel");
     channel.bind("my-event", function (data: any) {
       alert(JSON.stringify(data));
     });
+
+    setUsePusher(pusher);
 
     // if (webscoketRef.current == null) {
     //   const socketurl = "ws://localhost:8080";
@@ -112,7 +108,7 @@ export default function Counter() {
   ) {
     if (menuList.length == 0) {
       alert("메뉴를 선택하세요");
-    } else if (pusher) {
+    } else if (usePusher) {
       const select = window.confirm("주문을 확정하시겠습니까?");
       if (select) {
         const sendData = {
