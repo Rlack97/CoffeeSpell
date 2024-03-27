@@ -66,10 +66,11 @@ export default function Counter() {
 
   useEffect(() => {
     console.log(process.env.APP_KEY);
+    console.log("f7a5e3a12d42b498143b");
     console.log("웨안됨");
     // @ts-ignore
-    const channels = new Pusher(process.env.APP_KEY, {
-      cluster: process.env.CLUSTER,
+    const channels = new Pusher("f7a5e3a12d42b498143b", {
+      cluster: "ap3",
     });
     console.log(channels);
 
