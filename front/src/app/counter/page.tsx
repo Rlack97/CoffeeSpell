@@ -1,9 +1,10 @@
 "use client";
 import axios from "axios";
-import { useState, useLayoutEffect, useRef } from "react";
+import { useState, useLayoutEffect, useRef, useEffect } from "react";
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import useMenuStore from "@/app/hooks/useMenuInfo";
+import Pusher from "pusher";
 
 interface Menu {
   menu_id: number;
@@ -24,7 +25,7 @@ interface Menu_send {
 export default function Counter() {
   const router = useRouter();
   const { menuItems, setMenuItems } = useMenuStore();
-  const webscoketRef = useRef<WebSocket | null>(null);
+  const pusherRef = useRef<Pusher | null>(null);
   const [menuList, setmenuList] = useState<Menu_send[]>([]);
   const [packing, setPacking] = useState(false);
 
@@ -63,37 +64,64 @@ export default function Counter() {
     }
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     // 웹소켓 연결
-    if (webscoketRef.current == null) {
-      const socketurl = "ws://localhost:8080";
-      const socket = new WebSocket(socketurl);
-      socket.onopen = function (event) {
-        console.log("WebSocket 연결 성공!");
-        webscoketRef.current = socket;
-      };
+    const pusherKey: string | undefined =
+      process.env.NEXT_PUBLIC_PUSHER_APP_KEY;
+    const pusherCluster: string | undefined =
+      process.env.NEXT_PUBLIC_PUSHER_CLUSTER;
+
+    if (!pusherKey || !pusherCluster) {
+      console.error("Pusher credentials are missing.");
+      return;
     }
 
+    // @ts-ignore
+    const pusher: Pusher = new Pusher(pusherKey, {
+      cluster: pusherCluster,
+    });
+
+    // @ts-ignore
+    const channel = pusher.subscribe("my-channel");
+    channel.bind("my-event", function (data: any) {
+      alert(JSON.stringify(data));
+    });
+
+    // if (webscoketRef.current == null) {
+    //   const socketurl = "ws://localhost:8080";
+    //   const socket = new WebSocket(socketurl);
+    //   socket.onopen = function (event) {
+    //     console.log("WebSocket 연결 성공!");
+    //     webscoketRef.current = socket;
+    //   };
+    // }
+
+    return () => {
+      // @ts-ignore
+      pusher.unsubscribe("my-channel");
+    };
+  }, []);
+
+  useLayoutEffect(() => {
     // 메뉴 불러오기
     if (menuItems === null) {
       handleGetMenu();
       console.log("menu called");
     }
-  });
+  }, []);
 
   // 주문 보내기
   function sendMenuSelectionToServer(menuList: Menu_send[], packing: boolean) {
     if (menuList.length == 0) {
       alert("메뉴를 선택하세요");
-    } else if (webscoketRef.current) {
+    } else if (pusherRef.current) {
       const select = window.confirm("주문을 확정하시겠습니까?");
       if (select) {
         const sendData = {
           menuList: menuList,
           packing: packing,
         };
-        const jsonString = JSON.stringify(sendData);
-        webscoketRef.current.send(jsonString);
+        pusherRef.current.trigger("my-channel", "my-event", sendData);
         // 리스트 초기화
         setReceipt(false);
         setmenuList([]);
