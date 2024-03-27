@@ -66,10 +66,8 @@ export default function Counter() {
 
   useEffect(() => {
     // 웹소켓 연결
-    const pusherKey: string | undefined =
-      process.env.NEXT_PUBLIC_PUSHER_APP_KEY;
-    const pusherCluster: string | undefined =
-      process.env.NEXT_PUBLIC_PUSHER_CLUSTER;
+    const pusherKey: string | undefined = "f7a5e3a12d42b498143b";
+    const pusherCluster: string | undefined = "ap3";
 
     if (!pusherKey || !pusherCluster) {
       console.error("Pusher credentials are missing.");
