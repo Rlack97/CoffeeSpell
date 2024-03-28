@@ -64,23 +64,25 @@ export default function Counter() {
     }
   }
 
-  useEffect(() => {
-    // @ts-ignore
-    const channels = new Pusher(process.env.NEXT_PUBLIC_APP_KEY);
+  // useEffect(() => {
+  // @ts-ignore
+  const channels = new Pusher(process.env.NEXT_PUBLIC_APP_KEY, {
+    cluster: process.env.NEXT_PUBLIC_CLUSTER,
+  });
 
-    // @ts-ignore
-    const channel = channels.subscribe("my-channel");
-    channel.bind("my-event", function (data: any) {
-      alert(JSON.stringify(data));
-    });
+  // @ts-ignore
+  const channel = channels.subscribe("my-channel");
+  channel.bind("my-event", function (data: any) {
+    alert(JSON.stringify(data));
+  });
 
-    setUsePusher(channels);
+  setUsePusher(channels);
 
-    return () => {
-      // @ts-ignore
-      channel.unsubscribe("my-channel");
-    };
-  }, []);
+  //   return () => {
+  //     // @ts-ignore
+  //     channel.unsubscribe("my-channel");
+  //   };
+  // }, []);
 
   useLayoutEffect(() => {
     // 메뉴 불러오기
