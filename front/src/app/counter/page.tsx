@@ -66,10 +66,7 @@ export default function Counter() {
 
   useEffect(() => {
     console.log(process.env.NEXT_PUBLIC_APP_KEY);
-    console.log(process.env.NEXT_PUBLIC_APP_ID);
     console.log(process.env.NEXT_PUBLIC_CLUSTER);
-    console.log("f7a5e3a12d42b498143b");
-    console.log("웨안됨");
     // @ts-ignore
     const channels = new Pusher("f7a5e3a12d42b498143b", {
       cluster: "ap3",
