@@ -4,7 +4,7 @@ import { useState, useLayoutEffect, useRef, useEffect } from "react";
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import useMenuStore from "@/app/hooks/useMenuInfo";
-import Pusher from "pusher";
+import Pusher from "pusher-js";
 
 interface Menu {
   menu_id: number;
@@ -64,25 +64,25 @@ export default function Counter() {
     }
   }
 
-  // useEffect(() => {
-  // @ts-ignore
-  const channels = new Pusher(process.env.NEXT_PUBLIC_APP_KEY, {
-    cluster: process.env.NEXT_PUBLIC_CLUSTER,
-  });
+  useEffect(() => {
+    // @ts-ignore
+    const channels = new Pusher(process.env.NEXT_PUBLIC_APP_KEY, {
+      cluster: process.env.NEXT_PUBLIC_CLUSTER,
+    });
 
-  // @ts-ignore
-  const channel = channels.subscribe("my-channel");
-  channel.bind("my-event", function (data: any) {
-    alert(JSON.stringify(data));
-  });
+    // @ts-ignore
+    const channel = channels.subscribe("my-channel");
+    channel.bind("my-event", function (data: any) {
+      alert(JSON.stringify(data));
+    });
 
-  setUsePusher(channels);
+    setUsePusher(channels);
 
-  //   return () => {
-  //     // @ts-ignore
-  //     channel.unsubscribe("my-channel");
-  //   };
-  // }, []);
+    return () => {
+      // @ts-ignore
+      channel.unsubscribe("my-channel");
+    };
+  }, []);
 
   useLayoutEffect(() => {
     // 메뉴 불러오기
