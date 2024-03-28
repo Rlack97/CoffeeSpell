@@ -66,9 +66,7 @@ export default function Counter() {
 
   useEffect(() => {
     // @ts-ignore
-    const channels = new Pusher(process.env.NEXT_PUBLIC_APP_KEY, {
-      cluster: process.env.NEXT_PUBLIC_CLUSTER,
-    });
+    const channels = new Pusher(process.env.NEXT_PUBLIC_APP_KEY);
 
     // @ts-ignore
     const channel = channels.subscribe("my-channel");
