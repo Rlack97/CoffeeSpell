@@ -19,7 +19,6 @@ export default function RootLayout({
       <body className={`font-inter ${inter.className}`}>
         <div>{children}</div>
       </body>
-      <script async src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
     </html>
   );
 }

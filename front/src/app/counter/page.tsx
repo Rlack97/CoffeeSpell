@@ -65,13 +65,10 @@ export default function Counter() {
   }
 
   useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_APP_KEY);
-    console.log(process.env.NEXT_PUBLIC_CLUSTER);
     // @ts-ignore
-    const channels = new Pusher("f7a5e3a12d42b498143b", {
-      cluster: "ap3",
+    const channels = new Pusher(process.env.NEXT_PUBLIC_APP_KEY, {
+      cluster: process.env.NEXT_PUBLIC_CLUSTER,
     });
-    console.log(channels);
 
     // @ts-ignore
     const channel = channels.subscribe("my-channel");
@@ -80,15 +77,6 @@ export default function Counter() {
     });
 
     setUsePusher(channels);
-
-    // if (webscoketRef.current == null) {
-    //   const socketurl = "ws://localhost:8080";
-    //   const socket = new WebSocket(socketurl);
-    //   socket.onopen = function (event) {
-    //     console.log("WebSocket 연결 성공!");
-    //     webscoketRef.current = socket;
-    //   };
-    // }
 
     return () => {
       // @ts-ignore
