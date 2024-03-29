@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import useOrderStore from "../hooks/useOrderInfo";
 import { useRouter } from "next/navigation";
 import { BiSolidCoffeeBean } from "react-icons/bi";
+import Pusher from "pusher-js";
 
 interface OrderItem {
   name: string;
