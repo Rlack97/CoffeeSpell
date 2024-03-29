@@ -3,8 +3,7 @@ import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { userId, password } = body;
+  const { userId, password } = await req.json();
   try {
     // 사용자 검증
     const { rows } =
