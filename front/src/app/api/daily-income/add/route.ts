@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date().toLocaleDateString();
     const { income, user_pk } = await req.json();
     const incomeNumber = parseInt(income);
     const number_pk = parseInt(user_pk);
