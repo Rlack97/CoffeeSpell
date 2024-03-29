@@ -61,6 +61,7 @@ export default function Kitchen() {
           user_id: user_id,
           income: income,
         };
+        console.log(sendData);
         // 일일매출값을 DB에 저장
         const response = await axios.post(apiUrl, JSON.stringify(sendData), {
           headers: {
