@@ -22,17 +22,14 @@ export async function POST(req: Request) {
     pusher
       .trigger("my-channel", "my-event", { message })
       .then(() => {
-        NextResponse.json({
-          success: true,
-          message: "Message sent successfully.",
-        });
+        NextResponse.json({ message: "전송 성공" }, { status: 200 });
       })
       .catch((error) => {
         console.error("Error sending message:", error);
-        NextResponse.json({
-          success: false,
-          message: "Failed to send message.",
-        });
+        NextResponse.json(
+          { error: "서버에서 오류가 발생했습니다." },
+          { status: 500 }
+        );
       });
   } else {
     NextResponse.json({ success: false, message: "Method Not Allowed" });
