@@ -6,9 +6,9 @@ export async function POST(req: NextRequest) {
     const today = new Date().toISOString().split("T")[0];
     const { income, userId } = await req.json();
     const incomeNumber = parseInt(income);
-    const userQuery =
+    const { rows } =
       await sql`SELECT user_pk FROM users WHERE user_id = ${userId}`;
-    const userPk = userQuery.rows[0].user_pk;
+    const userPk = rows[0].user_pk;
 
     await sql`INSERT INTO daily_income (date, daily_income, user_id) VALUES (${today}, ${incomeNumber}, ${userPk})`;
     return NextResponse.json({ message: "기록되었습니다." }, { status: 200 });
