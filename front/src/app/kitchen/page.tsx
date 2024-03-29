@@ -19,24 +19,18 @@ export default function Kitchen() {
 
   useEffect(() => {
     // 웹소켓 연결
-    const socketurl = "ws://localhost:8080";
-    const socket = new WebSocket(socketurl);
-    socket.onopen = function (event) {
-      console.log("WebSocket 연결 성공!");
-    };
+    // @ts-ignore
+    const channels = new Pusher(process.env.NEXT_PUBLIC_APP_KEY, {
+      cluster: process.env.NEXT_PUBLIC_CLUSTER,
+    });
+    // @ts-ignore
+    const channel = channels.subscribe("my-channel");
+
     // 메시지를 수신하면 호출되는 이벤트 핸들러
-    socket.onmessage = function (event) {
-      const receivedData = event.data;
-      const reader = new FileReader();
-      reader.onload = function () {
-        const textData = reader.result;
-        if (textData && typeof textData === "string") {
-          const receivedOrder = JSON.parse(textData);
-          addOrderItems(receivedOrder.menuList, receivedOrder.packing);
-        }
-      };
-      reader.readAsText(receivedData);
-    };
+    channel.bind("my-event", function (data: any) {
+      const receivedData = JSON.parse(data);
+      addOrderItems(receivedData.menuList, receivedData.packing);
+    });
   }, []);
 
   function completeOrders() {}

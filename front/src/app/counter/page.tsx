@@ -72,9 +72,9 @@ export default function Counter() {
 
     // @ts-ignore
     const channel = channels.subscribe("my-channel");
-    channel.bind("my-event", function (data: any) {
-      alert(JSON.stringify(data));
-    });
+    // channel.bind("my-event", function (data: any) {
+    //   alert(JSON.stringify(data));
+    // });
 
     setUsePusher(channels);
 
