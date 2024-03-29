@@ -46,7 +46,18 @@ const useOrderStore = create(
           return { orders: [[]], packing: [] };
         });
       },
-      deleteOrderItems(orderIndex: number) {},
+      deleteOrderItems: (orderIndex: number) => {
+        set((state) => {
+          const newOrders = [...state.orders];
+          const newPacking = [...state.packing];
+
+          // 주문 및 포장 여부 배열에서 해당 인덱스의 항목 삭제
+          newOrders.splice(orderIndex, 1);
+          newPacking.splice(orderIndex, 1);
+
+          return { orders: newOrders, packing: newPacking };
+        });
+      },
     }),
     {
       name: "orderStorage",
