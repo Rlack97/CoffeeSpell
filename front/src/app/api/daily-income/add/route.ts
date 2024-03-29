@@ -5,11 +5,12 @@ export async function POST(req: NextRequest) {
   try {
     const today = new Date().toISOString().split("T")[0];
     const { income, userId } = await req.json();
+    const incomeNumber = parseInt(income);
     const userQuery =
       await sql`SELECT user_pk FROM users WHERE user_id = ${userId}`;
     const userPk = userQuery.rows[0].user_pk;
 
-    await sql`INSERT INTO daily_income (date, daily_income, user_id) VALUES (${today}, ${income}, ${userPk})`;
+    await sql`INSERT INTO daily_income (date, daily_income, user_id) VALUES (${today}, ${incomeNumber}, ${userPk})`;
     return NextResponse.json({ message: "기록되었습니다." }, { status: 200 });
   } catch (error) {
     console.error("에러 발생:", error);
