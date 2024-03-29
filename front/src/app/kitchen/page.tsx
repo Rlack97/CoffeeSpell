@@ -67,6 +67,7 @@ export default function Kitchen() {
             "Content-Type": "application/json",
           },
         });
+        resetIncome();
       } catch (error) {
         console.error("API 요청 중 오류 발생:", error);
       }
