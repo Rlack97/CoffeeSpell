@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import useOrderStore from "../hooks/useOrderInfo";
+import useIncomeStore from "../hooks/useIncomeInfo";
 import { useRouter } from "next/navigation";
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import Pusher from "pusher-js";
@@ -17,6 +18,7 @@ export default function Kitchen() {
   const router = useRouter();
   const { orders, packing, addOrderItems, resetOrderItmes, deleteOrderItems } =
     useOrderStore();
+  const { income, setIncome, resetIncome } = useIncomeStore();
 
   useEffect(() => {
     // 웹소켓 연결
@@ -33,7 +35,17 @@ export default function Kitchen() {
     });
   }, []);
 
-  function completeOrders() {}
+  function completeOrders(orderList: OrderItem[], index: number) {
+    // 일일매출값에 현재 주문의 금액만큼의 값을 더함\
+    const totalPrice: number = orderList.reduce((acc, currentItem) => {
+      // 각 항목의 가격 * 수량을 합산하여 반환
+      return acc + currentItem.price * currentItem.quantity;
+    }, 0);
+
+    setIncome(totalPrice);
+    // 리스트에서 삭제
+    deleteOrderItems(index);
+  }
 
   return (
     <div className="flex flex-col p-8">
@@ -76,7 +88,7 @@ export default function Kitchen() {
               <div className="flex justify-end mt-4">
                 <button
                   onClick={() => {
-                    deleteOrderItems(index);
+                    completeOrders(orderList, index);
                   }}
                   className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
                 >
@@ -101,8 +113,13 @@ export default function Kitchen() {
       >
         초기화
       </button>
+      <button
+        onClick={resetIncome}
+        className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
+      >
+        매출 초기화
+      </button>
+      <div> 오늘 매출 : {income}원</div>
     </div>
   );
 }
-
-// 전달받은 리스트를 삭제하거나, 완료할수 있다
