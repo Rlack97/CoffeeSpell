@@ -18,7 +18,7 @@ interface OrderItem {
 
 export default function Kitchen() {
   const router = useRouter();
-  const { user_id } = useUserIdStore();
+  const { user_pk } = useUserIdStore();
   const { orders, packing, addOrderItems, resetOrderItmes, deleteOrderItems } =
     useOrderStore();
   const { income, setIncome, resetIncome } = useIncomeStore();
@@ -58,7 +58,7 @@ export default function Kitchen() {
       const apiUrl = "/api/daily-income/add";
       try {
         const sendData = {
-          user_id: user_id,
+          user_pk: user_pk,
           income: income,
         };
         // 일일매출값을 DB에 저장

@@ -9,7 +9,7 @@ import { BiSolidCoffeeBean } from "react-icons/bi";
 
 export default function Home() {
   const router = useRouter();
-  const { setUser_id } = useUserIdStore();
+  const { setUser_id, setUser_pk } = useUserIdStore();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,6 +32,7 @@ export default function Home() {
       });
       // 로그인 성공
       setUser_id(response.data.user_id);
+      setUser_pk(response.data.user_pk);
       router.push("/setting/cross");
     } catch (error) {
       // 에러 처리

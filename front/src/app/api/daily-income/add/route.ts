@@ -4,15 +4,11 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const today = new Date().toISOString().split("T")[0];
-    const { income, userId } = await req.json();
+    const { income, user_pk } = await req.json();
     const incomeNumber = parseInt(income);
-    const { rows } =
-      await sql`SELECT user_pk FROM users WHERE user_id = ${userId}`;
-    console.error(rows);
-    console.error(userId);
+    const number_pk = parseInt(user_pk);
 
-    const userPk = rows[0].user_pk;
-    await sql`INSERT INTO daily_income (date, daily_income, user_id) VALUES (${today}, ${incomeNumber}, ${userPk})`;
+    await sql`INSERT INTO daily_income (date, daily_income, user_id) VALUES (${today}, ${incomeNumber}, ${number_pk})`;
     return NextResponse.json({ message: "기록되었습니다." }, { status: 200 });
   } catch (error) {
     console.error("에러 발생:", error);

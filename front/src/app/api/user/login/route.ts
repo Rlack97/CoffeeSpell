@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     if (rows.length > 0) {
       // 로그인 성공
       return NextResponse.json(
-        { message: "로그인 성공", user_id: userId },
+        { message: "로그인 성공", user_id: userId, user_pk: rows[0].user_pk },
         { status: 200 }
       );
     } else {
