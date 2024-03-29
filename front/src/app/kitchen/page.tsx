@@ -1,7 +1,9 @@
 "use client";
+import axios from "axios";
 import { useEffect } from "react";
 import useOrderStore from "../hooks/useOrderInfo";
 import useIncomeStore from "../hooks/useIncomeInfo";
+import useUserIdStore from "../hooks/useUserInfo";
 import { useRouter } from "next/navigation";
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import Pusher from "pusher-js";
@@ -16,6 +18,7 @@ interface OrderItem {
 
 export default function Kitchen() {
   const router = useRouter();
+  const { user_id } = useUserIdStore();
   const { orders, packing, addOrderItems, resetOrderItmes, deleteOrderItems } =
     useOrderStore();
   const { income, setIncome, resetIncome } = useIncomeStore();
@@ -45,6 +48,29 @@ export default function Kitchen() {
     setIncome(totalPrice);
     // 리스트에서 삭제
     deleteOrderItems(index);
+  }
+
+  async function completeDay() {
+    const endDay = window.confirm(
+      "하루 영업을 마치고 일일 매출을 저장하시겠습니까?"
+    );
+    if (endDay) {
+      const apiUrl = "/api/dailyincome/add";
+      try {
+        const sendData = {
+          user_id: user_id,
+          income: income,
+        };
+        // 일일매출값을 DB에 저장
+        const response = await axios.post(apiUrl, JSON.stringify(sendData), {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      } catch (error) {
+        console.error("API 요청 중 오류 발생:", error);
+      }
+    }
   }
 
   return (
@@ -120,6 +146,12 @@ export default function Kitchen() {
         매출 초기화
       </button>
       <div> 오늘 매출 : {income}원</div>
+      <button
+        onClick={completeDay}
+        className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
+      >
+        일일 마감
+      </button>
     </div>
   );
 }
