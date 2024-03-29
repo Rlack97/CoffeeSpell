@@ -7,7 +7,6 @@ export async function POST(req: NextRequest) {
     const { income, userId } = await req.json();
     const userQuery =
       await sql`SELECT user_pk FROM users WHERE user_id = ${userId}`;
-    // const { rows } = await sql`SELECT ${req.body.date} FROM daily_income`;
     const userPk = userQuery.rows[0].user_pk;
     await sql`INSERT INTO daily_income (date, income, user_id) VALUES (${today}, ${income}, ${userPk})`;
     return NextResponse.json({ status: 200 });

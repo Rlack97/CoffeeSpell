@@ -55,7 +55,7 @@ export default function Kitchen() {
       "하루 영업을 마치고 일일 매출을 저장하시겠습니까?"
     );
     if (endDay) {
-      const apiUrl = "/api/dailyincome/add";
+      const apiUrl = "/api/daily-income/add";
       try {
         const sendData = {
           user_id: user_id,
