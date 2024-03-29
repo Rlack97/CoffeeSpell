@@ -74,10 +74,20 @@ export default function Kitchen() {
                 ))}
               </ul>
               <div className="flex justify-end mt-4">
-                <button className="bg-green-500 text-white px-4 py-2 rounded-md mr-2">
+                <button
+                  onClick={() => {
+                    deleteOrderItems(index);
+                  }}
+                  className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
+                >
                   완료
                 </button>
-                <button className="bg-red-500 text-white px-4 py-2 rounded-md">
+                <button
+                  onClick={() => {
+                    deleteOrderItems(index);
+                  }}
+                  className="bg-red-500 text-white px-4 py-2 rounded-md"
+                >
                   취소
                 </button>
               </div>
@@ -96,4 +106,3 @@ export default function Kitchen() {
 }
 
 // 전달받은 리스트를 삭제하거나, 완료할수 있다
-// 완료한 리스트는 DB에 저장한다.

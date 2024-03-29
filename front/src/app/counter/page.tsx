@@ -339,5 +339,3 @@ export default function Counter() {
     </div>
   );
 }
-
-// 포장 매장 구분
