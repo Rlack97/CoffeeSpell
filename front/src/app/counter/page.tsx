@@ -25,7 +25,7 @@ interface Menu_send {
 
 export default function Counter() {
   const router = useRouter();
-  const { orderNum, increaseOrderNum } = useOrderStore();
+  const { orderNum, increaseOrderNum, resetOrderItmes } = useOrderStore();
   const { menuItems, setMenuItems } = useMenuStore();
   const [usePusher, setUsePusher] = useState<Pusher | null>(null);
   const [menuList, setmenuList] = useState<Menu_send[]>([]);
@@ -83,6 +83,7 @@ export default function Counter() {
     return () => {
       // @ts-ignore
       channel.unsubscribe("my-channel");
+      resetOrderItmes();
     };
   }, []);
 

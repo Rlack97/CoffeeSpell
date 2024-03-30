@@ -128,7 +128,7 @@ export default function Kitchen() {
             orders.map((orderList, index) => (
               <div
                 key={index}
-                className="bg-gray-100 p-4 rounded-md flex-shrink-0"
+                className="bg-gray-100 p-4 rounded-md flex-shrink-0 p-4"
               >
                 <h2 className="mb-1">{packing[index] ? "포장" : "매장"}</h2>
                 <h2 className="text-lg font-semibold mb-2">
