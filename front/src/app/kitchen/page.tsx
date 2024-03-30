@@ -133,7 +133,7 @@ export default function Kitchen() {
                     </div>
                   ))}
                 </ul>
-                <div className="flex justify-end mt-4">
+                <div className="flex-end flex justify-between">
                   <button
                     onClick={() => {
                       completeOrders(orderList, index);
