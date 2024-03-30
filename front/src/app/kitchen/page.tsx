@@ -39,15 +39,20 @@ export default function Kitchen() {
   }, []);
 
   function completeOrders(orderList: OrderItem[], index: number) {
-    // 일일매출값에 현재 주문의 금액만큼의 값을 더함\
-    const totalPrice: number = orderList.reduce((acc, currentItem) => {
-      // 각 항목의 가격 * 수량을 합산하여 반환
-      return acc + currentItem.price * currentItem.quantity;
-    }, 0);
+    const ordercomplete = window.confirm("주문 제공이 완료되었습니까?");
+    if (ordercomplete) {
+      // 일일매출값에 현재 주문의 금액만큼의 값을 더함\
+      const totalPrice: number = orderList.reduce((acc, currentItem) => {
+        // 각 항목의 가격 * 수량을 합산하여 반환
+        return acc + currentItem.price * currentItem.quantity;
+      }, 0);
 
-    setIncome(totalPrice);
-    // 리스트에서 삭제
-    deleteOrderItems(index);
+      setIncome(totalPrice);
+      // 리스트에서 삭제
+      deleteOrderItems(index);
+    } else {
+      alert("취소합니다.");
+    }
   }
 
   async function completeDay() {
@@ -100,7 +105,7 @@ export default function Kitchen() {
             일일 마감
           </button>
         </div>
-        <div className="flex flex-row gap-4 overflow-x-scroll">
+        <div className="flex flex-row gap-4 overflow-x-scroll max-h-[83vh]">
           {orders.length === 0 ||
           (orders.length === 1 && orders[0].length === 0) ? (
             <div className="bg-gray-200 p-4 rounded-md flex-shrink-0">
