@@ -118,17 +118,17 @@ export default function Kitchen() {
           </button>
           <div> 오늘 매출 : {income}원</div>
         </div>
-        <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200 p-4">
+        <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200 p-4 min-h-[80vh]">
           {orders.length === 0 ||
           (orders.length === 1 && orders[0].length === 0) ? (
-            <div className="p-4 rounded-md">
+            <div className="p-4 rounded-md bg-gray-100">
               <h2 className="text-lg font-semibold">들어온 주문이 없어요!</h2>
             </div>
           ) : (
             orders.map((orderList, index) => (
               <div
                 key={index}
-                className="bg-gray-100 p-4 rounded-md flex-shrink-0 p-4"
+                className="bg-gray-100 rounded-md flex-shrink-0 p-4"
               >
                 <h2 className="mb-1">{packing[index] ? "포장" : "매장"}</h2>
                 <h2 className="text-lg font-semibold mb-2">

@@ -238,7 +238,7 @@ export default function Counter() {
 
         <div
           id={"menulist"}
-          className="bg-gray-200 p-4 rounded-r-lg overflow-y-scroll flex flex-col max-h-[83vh]"
+          className="bg-gray-200 p-4 rounded-r-lg overflow-y-scroll flex flex-col max-h-[80vh]"
         >
           <div className="flex space-x-4 mb-3">
             <button
