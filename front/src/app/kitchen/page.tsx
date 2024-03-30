@@ -43,7 +43,7 @@ export default function Kitchen() {
       addOrderItems(
         data.message.menuList,
         data.message.packing,
-        data.messsage.orderNum
+        data.message.orderNum
       );
     });
   }, []);
