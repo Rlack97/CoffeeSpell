@@ -146,7 +146,7 @@ export default function Kitchen() {
                     </div>
                   ))}
                 </ul>
-                <div className="flex-end flex justify-between">
+                <div className="grow flex justify-between">
                   <button
                     onClick={() => {
                       completeOrders(orderList, index);
