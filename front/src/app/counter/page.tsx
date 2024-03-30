@@ -261,7 +261,7 @@ export default function Counter() {
                 {handleFilterMenu(category).map((menu) => (
                   <button
                     key={menu.menu_id}
-                    className="m-4 btn basis-1/5 h-20 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                    className="m-4 btn basis-1/5 grow-0 h-20 bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-2 px-4 rounded"
                     onClick={() => handleAddMenu(menu, 1)}
                   >
                     {menu.menu_name}
