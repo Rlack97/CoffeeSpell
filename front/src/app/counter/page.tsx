@@ -282,9 +282,10 @@ export default function Counter() {
         <div className="fixed flex flex-col top-0 right-0 bg-white p-4 shadow-md h-full">
           <ul className="h-full overflow-y-auto flex-col">
             <div className="my-2">
-              <div className="text-lg">{orderNum}번</div>
-              {packing && <div className="text-lg">포장주문</div>}
-              {packing == false && <div className="text-lg">매장주문</div>}
+              {packing && <div className="text-lg">{orderNum}번 포장주문</div>}
+              {packing == false && (
+                <div className="text-lg">{orderNum}번 매장주문</div>
+              )}
             </div>
             {menuList.map((menu, index) => (
               <div key={index} className="flex-col">

@@ -40,11 +40,12 @@ export default function Kitchen() {
 
     // 메시지를 수신하면 호출되는 이벤트 핸들러
     channel.bind("my-event", function (data: any) {
-      addOrderItems(
-        data.message.menuList,
-        data.message.packing,
-        data.messsage.orderNum
-      );
+      console.log(data);
+      // addOrderItems(
+      //   data.message.menuList,
+      //   data.message.packing,
+      //   data.messsage.orderNum
+      // );
     });
   }, []);
 
