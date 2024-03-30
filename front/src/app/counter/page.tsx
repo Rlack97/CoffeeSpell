@@ -320,9 +320,9 @@ export default function Counter() {
           <div className="flex-end font-bold flex justify-between mb-2">
             <div>합계</div> <div>{totalPrice()}</div>
           </div>
-          <div className="flex-end">
+          <div className="flex-end flex justify-between">
             <button
-              className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2"
+              className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
               onClick={() => {
                 setReceipt(false);
               }}
@@ -330,7 +330,7 @@ export default function Counter() {
               닫기
             </button>
             <button
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2"
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
               onClick={() => {
                 if (menuList) {
                   sendMenuSelectionToServer(menuList, packing);
