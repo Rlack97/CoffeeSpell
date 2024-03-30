@@ -192,7 +192,7 @@ export default function Counter() {
   };
 
   return (
-    <div className="flex flex-col p-8">
+    <div className="flex flex-col p-6">
       <h1
         className="text-2xl font-semibold mb-6 flex items-center w-64 cursor-pointer"
         onClick={() => router.push("/setting/cross")}
