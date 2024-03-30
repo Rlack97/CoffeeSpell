@@ -68,6 +68,8 @@ export default function Kitchen() {
           },
         });
         resetIncome();
+        alert("오늘도 수고 많으셨습니다.");
+        router.push("/setting/cross");
       } catch (error) {
         console.error("API 요청 중 오류 발생:", error);
       }
@@ -140,12 +142,12 @@ export default function Kitchen() {
       >
         초기화
       </button>
-      <button
+      {/* <button
         onClick={resetIncome}
         className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
       >
         매출 초기화
-      </button>
+      </button> */}
       <div> 오늘 매출 : {income}원</div>
       <button
         onClick={completeDay}

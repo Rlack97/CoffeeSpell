@@ -232,7 +232,7 @@ export default function Counter() {
         {/* 카테고리별로 버튼 렌더링 */}
         <div
           id={"menulist"}
-          className="bg-gray-200 p-4 rounded-r-lg overflow-scroll flex flex-col max-h-[83vh]"
+          className="bg-gray-200 p-4 rounded-r-lg overflow-scroll flex flex-col max-h-[83vh] scrollbar-w-2 scrollbar-track-gray-200 scrollbar-thumb-gray-500"
         >
           <div className="flex space-x-4 mb-3">
             <button
