@@ -284,7 +284,7 @@ export default function Counter() {
               <div key={index} className="flex-col">
                 <li className="my-2">{menu.name}</li>
                 {menu.category != "음식" && (
-                  <div className="my-1">
+                  <div className="my-1 flex justify-between">
                     <label htmlFor="">아이스</label>
                     <input
                       type="checkbox"
@@ -317,7 +317,9 @@ export default function Counter() {
               </div>
             ))}
           </ul>
-          <div className="flex-end font-bold">합계: {totalPrice()}원</div>
+          <div className="flex-end font-bold flex justify-between">
+            <div>합계</div> <div>{totalPrice()}</div>
+          </div>
           <div className="flex-end">
             <button
               className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2"
