@@ -275,7 +275,7 @@ export default function Counter() {
       {/* 주문정보 출력 및 갯수조정 */}
       {receipt && (
         <div className="fixed flex flex-col top-0 right-0 bg-white p-4 shadow-md h-full">
-          <ul className="h-full overflow-y-auto flex">
+          <ul className="h-full overflow-y-auto flex-col">
             <div className="m-4">
               {packing && <div className="font-bold text-lg">포장주문</div>}
               {packing == false && (
