@@ -67,7 +67,7 @@ export default function Menu() {
   return (
     <div>
       <h1
-        className="text-3xl font-semibold mb-6 flex items-center"
+        className="text-2xl font-semibold mb-6 flex items-center w-64 cursor-pointer"
         onClick={() => router.push("/setting/cross")}
       >
         <BiSolidCoffeeBean className="mr-2" />
@@ -81,7 +81,7 @@ export default function Menu() {
           메뉴 추가
         </button>
       </div>
-      <div>
+      <div className="bg-gray-200 p-4 rounded-r-lg overflow-y-scroll flex flex-col max-h-[83vh]">
         {/* 카테고리별로 버튼 렌더링 */}
         {["커피", "차", "음료", "음식"].map((category) => (
           <div key={category} className="mb-4">
