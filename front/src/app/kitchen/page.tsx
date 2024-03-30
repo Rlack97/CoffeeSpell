@@ -83,6 +83,8 @@ export default function Kitchen() {
           },
         });
         resetIncome();
+        resetOrderItmes();
+
         alert("오늘도 수고 많으셨습니다.");
         router.push("/setting/cross");
       } catch (error) {
@@ -106,7 +108,7 @@ export default function Kitchen() {
             onClick={resetOrderItmes}
             className="h-16 relative bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
           >
-            주문 초기화
+            주문정보 초기화
           </button>
           <button
             onClick={completeDay}

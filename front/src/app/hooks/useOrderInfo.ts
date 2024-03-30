@@ -62,7 +62,7 @@ const useOrderStore = create(
       },
       resetOrderItmes: () => {
         set(() => {
-          return { orders: [[]], packing: [] };
+          return { orders: [[]], packing: [], orderNum: 1, numList: [] };
         });
       },
       deleteOrderItems: (orderIndex: number) => {
