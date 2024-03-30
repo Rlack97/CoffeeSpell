@@ -194,7 +194,7 @@ export default function Counter() {
   return (
     <div className="flex flex-col p-8">
       <h1
-        className="text-2xl font-semibold mb-6 flex items-center w-64"
+        className="text-2xl font-semibold mb-6 flex items-center w-64 hover:pointer"
         onClick={() => router.push("/setting/cross")}
       >
         <BiSolidCoffeeBean className="mr-3" />
@@ -297,7 +297,7 @@ export default function Counter() {
                 )}
                 <li className="my-1">{menu.price * menu.quantity}</li>
 
-                <div className="flex flex-1 justify-between my-1">
+                <div className="flex flex-1 justify-between my-1 mb-2">
                   <button
                     onClick={() => decreaseQuantity(index)}
                     className="bg-gray-200 rounded-l px-2"
@@ -312,7 +312,6 @@ export default function Counter() {
                     +
                   </button>
                 </div>
-
                 <hr />
               </div>
             ))}
