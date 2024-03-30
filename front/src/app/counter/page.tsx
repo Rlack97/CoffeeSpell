@@ -295,7 +295,9 @@ export default function Counter() {
                     />
                   </div>
                 )}
-                <div className="flex items-center grow my-1">
+                <li className="my-1">{menu.price * menu.quantity}</li>
+
+                <div className="flex flex-1 items-center my-1">
                   <button
                     onClick={() => decreaseQuantity(index)}
                     className="bg-gray-200 rounded-l px-2"
@@ -311,7 +313,6 @@ export default function Counter() {
                   </button>
                 </div>
 
-                <li className="my-1">{menu.price * menu.quantity}원</li>
                 <hr />
               </div>
             ))}
