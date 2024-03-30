@@ -194,7 +194,7 @@ export default function Counter() {
   return (
     <div className="flex flex-col p-8">
       <h1
-        className="text-3xl font-semibold mb-6 flex items-center"
+        className="text-2xl font-semibold mb-6 flex items-center w-64"
         onClick={() => router.push("/setting/cross")}
       >
         <BiSolidCoffeeBean className="mr-3" />
