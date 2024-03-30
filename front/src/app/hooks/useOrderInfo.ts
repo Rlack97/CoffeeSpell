@@ -12,9 +12,16 @@ interface OrderItem {
 interface UseOrderStore {
   orders: OrderItem[][]; // 메뉴 정보를 담을 배열 추가
   packing: boolean[];
+  orderNum: number;
+  numList: number[];
   resetOrderItmes: () => void;
-  addOrderItems: (orderItem: OrderItem[], packing: boolean) => void; // 주문 리스트에 주문 항목 추가
+  addOrderItems: (
+    orderItem: OrderItem[],
+    packing: boolean,
+    num: number
+  ) => void; // 주문 리스트에 주문 항목 추가
   deleteOrderItems: (orderIndex: number) => void;
+  increaseOrderNum: () => void;
 }
 
 const useOrderStore = create(
@@ -22,7 +29,13 @@ const useOrderStore = create(
     (set) => ({
       orders: [[]], // 메뉴 정보를 담을 빈 배열
       packing: [],
-      addOrderItems: (orderItem: OrderItem[], packing: boolean) => {
+      orderNum: 1,
+      numList: [],
+      addOrderItems: (
+        orderItem: OrderItem[],
+        packing: boolean,
+        num: number
+      ) => {
         set((state) => {
           if (
             // 빈 리스트일 경우에는 push가 아니라 값을 대체함
@@ -32,13 +45,19 @@ const useOrderStore = create(
             state.orders[0].length === 0
           ) {
             const newOrders = [orderItem];
-            return { orders: newOrders, packing: [packing] };
+            return { orders: newOrders, packing: [packing], numList: [num] };
           }
           const newOrders = [...state.orders];
           newOrders.push(orderItem);
           const newPacking = [...state.packing];
           newPacking.push(packing);
-          return { orders: newOrders, packing: newPacking };
+          const newNumList = [...state.numList];
+          newNumList.push(num);
+          return {
+            orders: newOrders,
+            packing: newPacking,
+            numList: newNumList,
+          };
         });
       },
       resetOrderItmes: () => {
@@ -50,12 +69,24 @@ const useOrderStore = create(
         set((state) => {
           const newOrders = [...state.orders];
           const newPacking = [...state.packing];
+          const newNumList = [...state.numList];
 
           // 주문 및 포장 여부 배열에서 해당 인덱스의 항목 삭제
           newOrders.splice(orderIndex, 1);
           newPacking.splice(orderIndex, 1);
+          newNumList.splice(orderIndex, 1);
 
-          return { orders: newOrders, packing: newPacking };
+          return {
+            orders: newOrders,
+            packing: newPacking,
+            numList: newNumList,
+          };
+        });
+      },
+      increaseOrderNum: () => {
+        set((state) => {
+          const increased = state.orderNum + 1;
+          return { orderNum: increased };
         });
       },
     }),

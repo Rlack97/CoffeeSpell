@@ -1,9 +1,10 @@
 "use client";
 import axios from "axios";
-import { useState, useLayoutEffect, useRef, useEffect } from "react";
+import { useState, useLayoutEffect, useEffect } from "react";
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import useMenuStore from "@/app/hooks/useMenuInfo";
+import useOrderStore from "../hooks/useOrderInfo";
 import Pusher from "pusher-js";
 
 interface Menu {
@@ -24,6 +25,7 @@ interface Menu_send {
 
 export default function Counter() {
   const router = useRouter();
+  const { orderNum, increaseOrderNum } = useOrderStore();
   const { menuItems, setMenuItems } = useMenuStore();
   const [usePusher, setUsePusher] = useState<Pusher | null>(null);
   const [menuList, setmenuList] = useState<Menu_send[]>([]);
@@ -105,6 +107,7 @@ export default function Counter() {
         const sendData = {
           menuList: menuList,
           packing: packing,
+          orderNum: orderNum,
         };
         const apiUrl = "/api/pusher";
 
@@ -120,6 +123,7 @@ export default function Counter() {
           setReceipt(false);
           setmenuList([]);
           setPacking(false);
+          increaseOrderNum();
         } catch (error) {
           console.error("API 요청 중 오류 발생:", error);
         }
@@ -277,6 +281,7 @@ export default function Counter() {
         <div className="fixed flex flex-col top-0 right-0 bg-white p-4 shadow-md h-full">
           <ul className="h-full overflow-y-auto flex-col">
             <div className="my-2">
+              <div className="text-lg">{orderNum}번</div>
               {packing && <div className="text-lg">포장주문</div>}
               {packing == false && <div className="text-lg">매장주문</div>}
             </div>

@@ -19,8 +19,14 @@ interface OrderItem {
 export default function Kitchen() {
   const router = useRouter();
   const { user_pk } = useUserIdStore();
-  const { orders, packing, addOrderItems, resetOrderItmes, deleteOrderItems } =
-    useOrderStore();
+  const {
+    orders,
+    packing,
+    numList,
+    addOrderItems,
+    resetOrderItmes,
+    deleteOrderItems,
+  } = useOrderStore();
   const { income, setIncome, resetIncome } = useIncomeStore();
 
   useEffect(() => {
@@ -34,7 +40,11 @@ export default function Kitchen() {
 
     // 메시지를 수신하면 호출되는 이벤트 핸들러
     channel.bind("my-event", function (data: any) {
-      addOrderItems(data.message.menuList, data.message.packing);
+      addOrderItems(
+        data.message.menuList,
+        data.message.packing,
+        data.messsage.orderNum
+      );
     });
   }, []);
 
@@ -94,32 +104,33 @@ export default function Kitchen() {
         <div className="flex flex-col w-64">
           <button
             onClick={resetOrderItmes}
-            className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
+            className="h-16 relative bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
           >
             주문 초기화
           </button>
           <button
             onClick={completeDay}
-            className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
+            className="h-16 relative bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
           >
             일일 마감
           </button>
+          <div> 오늘 매출 : {income}원</div>
         </div>
-        <div className="flex flex-row gap-4 overflow-x-scroll min-h-[83vh]">
+        <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200">
           {orders.length === 0 ||
           (orders.length === 1 && orders[0].length === 0) ? (
-            <div className="bg-gray-200 p-4 rounded-md flex-shrink-0">
+            <div className="p-4 rounded-md">
               <h2 className="text-lg font-semibold">들어온 주문이 없어요!</h2>
             </div>
           ) : (
             orders.map((orderList, index) => (
               <div
                 key={index}
-                className="bg-gray-200 p-4 rounded-md flex-shrink-0"
+                className="bg-gray-100 p-4 rounded-md flex-shrink-0"
               >
-                <h2>{packing[index] ? "포장" : "매장"}</h2>
+                <h2 className="mb-1">{packing[index] ? "포장" : "매장"}</h2>
                 <h2 className="text-lg font-semibold mb-2">
-                  주문 리스트 #{index + 1}
+                  {numList[index]}번 주문
                 </h2>
                 <ul className="space-y-2">
                   {orderList.map((orderItem, itemIndex) => (
@@ -162,7 +173,6 @@ export default function Kitchen() {
       >
         매출 초기화
       </button> */}
-      <div> 오늘 매출 : {income}원</div>
     </div>
   );
 }
