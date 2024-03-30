@@ -83,7 +83,7 @@ export default function Counter() {
     return () => {
       // @ts-ignore
       channel.unsubscribe("my-channel");
-      resetOrderItmes();
+      // resetOrderItmes();
     };
   }, []);
 

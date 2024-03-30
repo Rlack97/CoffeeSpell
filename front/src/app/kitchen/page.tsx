@@ -105,18 +105,22 @@ export default function Kitchen() {
       <div className="grow flex">
         <div className="flex flex-col w-64">
           <button
-            onClick={resetOrderItmes}
+            onClick={() => {
+              resetOrderItmes();
+            }}
             className="h-16 relative bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
           >
             주문정보 초기화
           </button>
           <button
-            onClick={completeDay}
+            onClick={() => {
+              completeDay();
+            }}
             className="h-16 relative bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
           >
             일일 마감
           </button>
-          <div> 오늘 매출 : {income}원</div>
+          <div className="text-center">오늘 매출 : {income}원</div>
         </div>
         <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200 p-4 min-h-[80vh]">
           {orders.length === 0 ||
@@ -139,10 +143,7 @@ export default function Kitchen() {
                     <div key={itemIndex} className="flex items-center">
                       <strong>{orderItem.name}</strong>&nbsp;
                       {orderItem.ice && "아이스"}&nbsp;
-                      <span className="ml-auto">
-                        {orderItem.quantity}개 -
-                        {orderItem.price * orderItem.quantity}₩
-                      </span>
+                      <span className="ml-auto">{orderItem.quantity}개 </span>
                     </div>
                   ))}
                 </ul>
