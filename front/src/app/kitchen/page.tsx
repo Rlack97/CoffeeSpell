@@ -77,9 +77,9 @@ export default function Kitchen() {
   }
 
   return (
-    <div className="flex flex-col p-8">
+    <div className="flex flex-col p-6">
       <h1
-        className="text-3xl font-semibold mb-6 flex items-center"
+        className="text-2xl font-semibold mb-6 flex items-center w-64 cursor-pointer"
         onClick={() => router.push("/setting/cross")}
       >
         <BiSolidCoffeeBean className="mr-3" />
