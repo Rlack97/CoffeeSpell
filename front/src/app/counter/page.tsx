@@ -321,7 +321,7 @@ export default function Counter() {
           </div>
           <div className="flex-end flex justify-between">
             <button
-              className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+              className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 mr-1 rounded"
               onClick={() => {
                 setReceipt(false);
               }}
@@ -329,7 +329,7 @@ export default function Counter() {
               닫기
             </button>
             <button
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 ml-1 rounded"
               onClick={() => {
                 if (menuList) {
                   sendMenuSelectionToServer(menuList, packing);
