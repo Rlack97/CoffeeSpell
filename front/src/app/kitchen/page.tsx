@@ -105,7 +105,7 @@ export default function Kitchen() {
             일일 마감
           </button>
         </div>
-        <div className="flex flex-row gap-4 overflow-x-scroll max-h-[83vh]">
+        <div className="flex flex-row gap-4 overflow-x-scroll min-h-[83vh]">
           {orders.length === 0 ||
           (orders.length === 1 && orders[0].length === 0) ? (
             <div className="bg-gray-200 p-4 rounded-md flex-shrink-0">
