@@ -85,63 +85,72 @@ export default function Kitchen() {
         <BiSolidCoffeeBean className="mr-3" />
         Coffee Spell
       </h1>
-
-      <div className="flex flex-row gap-4 overflow-x-scroll">
-        {orders.length === 0 ||
-        (orders.length === 1 && orders[0].length === 0) ? (
-          <div className="bg-gray-200 p-4 rounded-md flex-shrink-0">
-            <h2 className="text-lg font-semibold">들어온 주문이 없어요!</h2>
-          </div>
-        ) : (
-          orders.map((orderList, index) => (
-            <div
-              key={index}
-              className="bg-gray-200 p-4 rounded-md flex-shrink-0"
-            >
-              <h2>{packing[index] ? "포장" : "매장"}</h2>
-              <h2 className="text-lg font-semibold mb-2">
-                주문 리스트 #{index + 1}
-              </h2>
-              <ul className="space-y-2">
-                {orderList.map((orderItem, itemIndex) => (
-                  <div key={itemIndex} className="flex items-center">
-                    <strong>{orderItem.name}</strong>&nbsp;
-                    {orderItem.ice && "아이스"}&nbsp;
-                    <span className="ml-auto">
-                      {orderItem.quantity}개 -
-                      {orderItem.price * orderItem.quantity}₩
-                    </span>
-                  </div>
-                ))}
-              </ul>
-              <div className="flex justify-end mt-4">
-                <button
-                  onClick={() => {
-                    completeOrders(orderList, index);
-                  }}
-                  className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
-                >
-                  완료
-                </button>
-                <button
-                  onClick={() => {
-                    deleteOrderItems(index);
-                  }}
-                  className="bg-red-500 text-white px-4 py-2 rounded-md"
-                >
-                  취소
-                </button>
-              </div>
+      <div className="grow flex">
+        <div className="flex flex-col w-64">
+          <button
+            onClick={resetOrderItmes}
+            className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
+          >
+            주문 초기화
+          </button>
+          <button
+            onClick={completeDay}
+            className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
+          >
+            일일 마감
+          </button>
+        </div>
+        <div className="flex flex-row gap-4 overflow-x-scroll">
+          {orders.length === 0 ||
+          (orders.length === 1 && orders[0].length === 0) ? (
+            <div className="bg-gray-200 p-4 rounded-md flex-shrink-0">
+              <h2 className="text-lg font-semibold">들어온 주문이 없어요!</h2>
             </div>
-          ))
-        )}
+          ) : (
+            orders.map((orderList, index) => (
+              <div
+                key={index}
+                className="bg-gray-200 p-4 rounded-md flex-shrink-0"
+              >
+                <h2>{packing[index] ? "포장" : "매장"}</h2>
+                <h2 className="text-lg font-semibold mb-2">
+                  주문 리스트 #{index + 1}
+                </h2>
+                <ul className="space-y-2">
+                  {orderList.map((orderItem, itemIndex) => (
+                    <div key={itemIndex} className="flex items-center">
+                      <strong>{orderItem.name}</strong>&nbsp;
+                      {orderItem.ice && "아이스"}&nbsp;
+                      <span className="ml-auto">
+                        {orderItem.quantity}개 -
+                        {orderItem.price * orderItem.quantity}₩
+                      </span>
+                    </div>
+                  ))}
+                </ul>
+                <div className="flex justify-end mt-4">
+                  <button
+                    onClick={() => {
+                      completeOrders(orderList, index);
+                    }}
+                    className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
+                  >
+                    완료
+                  </button>
+                  <button
+                    onClick={() => {
+                      deleteOrderItems(index);
+                    }}
+                    className="bg-red-500 text-white px-4 py-2 rounded-md"
+                  >
+                    취소
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
       </div>
-      <button
-        onClick={resetOrderItmes}
-        className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
-      >
-        초기화
-      </button>
       {/* <button
         onClick={resetIncome}
         className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
@@ -149,12 +158,6 @@ export default function Kitchen() {
         매출 초기화
       </button> */}
       <div> 오늘 매출 : {income}원</div>
-      <button
-        onClick={completeDay}
-        className="bg-green-500 text-white px-4 py-2 rounded-md mr-2"
-      >
-        일일 마감
-      </button>
     </div>
   );
 }
