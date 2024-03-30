@@ -276,6 +276,8 @@ export default function Counter() {
       {receipt && (
         <div className="fixed flex flex-col top-0 right-0 bg-white p-4 shadow-md h-full">
           <ul className="h-full overflow-y-auto">
+            {packing && <div>포장주문</div>}
+            {packing == false && <div>매장주문</div>}
             {menuList.map((menu, index) => (
               <div key={index} className="flex-col">
                 <li className="mb-2">{menu.name}</li>
