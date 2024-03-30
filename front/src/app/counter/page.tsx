@@ -297,7 +297,7 @@ export default function Counter() {
                 )}
                 <li className="my-1">{menu.price * menu.quantity}</li>
 
-                <div className="flex flex-1 items-center my-1">
+                <div className="flex flex-1 justify-between my-1">
                   <button
                     onClick={() => decreaseQuantity(index)}
                     className="bg-gray-200 rounded-l px-2"
@@ -317,7 +317,7 @@ export default function Counter() {
               </div>
             ))}
           </ul>
-          <div className="flex-end font-bold flex justify-between">
+          <div className="flex-end font-bold flex justify-between mb-2">
             <div>합계</div> <div>{totalPrice()}</div>
           </div>
           <div className="flex-end">
