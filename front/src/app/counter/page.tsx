@@ -97,7 +97,8 @@ export default function Counter() {
   // 주문 보내기
   async function sendMenuSelectionToServer(
     menuList: Menu_send[],
-    packing: boolean
+    packing: boolean,
+    orderNum: number
   ) {
     if (menuList.length == 0) {
       alert("메뉴를 선택하세요");
@@ -337,7 +338,7 @@ export default function Counter() {
               className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 ml-1 rounded"
               onClick={() => {
                 if (menuList) {
-                  sendMenuSelectionToServer(menuList, packing);
+                  sendMenuSelectionToServer(menuList, packing, orderNum);
                 }
               }}
             >
