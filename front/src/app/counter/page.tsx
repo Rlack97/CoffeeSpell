@@ -282,9 +282,9 @@ export default function Counter() {
             </div>
             {menuList.map((menu, index) => (
               <div key={index} className="flex-col">
-                <li className="mb-2">{menu.name}</li>
+                <li className="my-2">{menu.name}</li>
                 {menu.category != "음식" && (
-                  <div>
+                  <div className="my-1">
                     <label htmlFor="">아이스</label>
                     <input
                       type="checkbox"
@@ -295,7 +295,7 @@ export default function Counter() {
                     />
                   </div>
                 )}
-                <div className="flex items-center grow">
+                <div className="flex items-center grow my-1">
                   <button
                     onClick={() => decreaseQuantity(index)}
                     className="bg-gray-200 rounded-l px-2"
@@ -311,7 +311,7 @@ export default function Counter() {
                   </button>
                 </div>
 
-                <li>{menu.price * menu.quantity}원</li>
+                <li className="my-1">{menu.price * menu.quantity}원</li>
                 <hr />
               </div>
             ))}
