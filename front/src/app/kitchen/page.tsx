@@ -134,7 +134,7 @@ export default function Kitchen() {
                 <h2 className="text-lg font-semibold mb-2">
                   {numList[index]}번 주문
                 </h2>
-                <ul className="space-y-2">
+                <ul className="space-y-2 grow flex flex-start">
                   {orderList.map((orderItem, itemIndex) => (
                     <div key={itemIndex} className="flex items-center">
                       <strong>{orderItem.name}</strong>&nbsp;
@@ -146,7 +146,7 @@ export default function Kitchen() {
                     </div>
                   ))}
                 </ul>
-                <div className="grow flex justify-between">
+                <div className="flex justify-between">
                   <button
                     onClick={() => {
                       completeOrders(orderList, index);
