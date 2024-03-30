@@ -96,7 +96,7 @@ export default function Kitchen() {
   return (
     <div className="flex flex-col p-6">
       <h1
-        className="text-2xl font-semibold mb-6 flex items-center w-64 cursor-pointer"
+        className="text-2xl font-semibold mb-6 flex items-center w-50 cursor-pointer"
         onClick={() => router.push("/setting/cross")}
       >
         <BiSolidCoffeeBean className="mr-3" />
@@ -126,10 +126,7 @@ export default function Kitchen() {
             </div>
           ) : (
             orders.map((orderList, index) => (
-              <div
-                key={index}
-                className="bg-gray-100 rounded-md flex-shrink-0 p-4"
-              >
+              <div key={index} className="bg-gray-100 rounded-md flex-col p-4">
                 <h2 className="mb-1">{packing[index] ? "포장" : "매장"}</h2>
                 <h2 className="text-lg font-semibold mb-2">
                   {numList[index]}번 주문
