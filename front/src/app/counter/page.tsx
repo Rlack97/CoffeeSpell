@@ -202,6 +202,7 @@ export default function Counter() {
       </h1>
 
       <div className="grow flex">
+        {/* 카테고리별 버튼 렌더링 */}
         <div className="flex flex-col w-64">
           <button
             className="h-16 relative bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-l-lg text-xl"
@@ -229,10 +230,9 @@ export default function Counter() {
           ))}
         </div>
 
-        {/* 카테고리별로 버튼 렌더링 */}
         <div
           id={"menulist"}
-          className="bg-gray-200 p-4 rounded-r-lg overflow-scroll flex flex-col max-h-[83vh] scrollbar-w-2 scrollbar-track-gray-200 scrollbar-thumb-gray-500"
+          className="bg-gray-200 p-4 rounded-r-lg overflow-y-scroll flex flex-col max-h-[83vh]"
         >
           <div className="flex space-x-4 mb-3">
             <button
