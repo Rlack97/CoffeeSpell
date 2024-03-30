@@ -276,11 +276,9 @@ export default function Counter() {
       {receipt && (
         <div className="fixed flex flex-col top-0 right-0 bg-white p-4 shadow-md h-full">
           <ul className="h-full overflow-y-auto flex-col">
-            <div className="m-4">
-              {packing && <div className="font-bold text-lg">포장주문</div>}
-              {packing == false && (
-                <div className="font-bold text-lg">매장주문</div>
-              )}
+            <div className="my-2">
+              {packing && <div className="text-lg">포장주문</div>}
+              {packing == false && <div className="text-lg">매장주문</div>}
             </div>
             {menuList.map((menu, index) => (
               <div key={index} className="flex-col">
@@ -297,7 +295,7 @@ export default function Counter() {
                     />
                   </div>
                 )}
-                <div className="flex items-center">
+                <div className="flex items-center grow">
                   <button
                     onClick={() => decreaseQuantity(index)}
                     className="bg-gray-200 rounded-l px-2"
