@@ -205,7 +205,7 @@ export default function Counter() {
         {/* 카테고리별 버튼 렌더링 */}
         <div className="flex flex-col w-64">
           <button
-            className="h-16 relative bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-l-lg text-xl"
+            className="h-16 relative bg-green-200 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-l-lg text-xl"
             onClick={() => {
               setReceipt(true);
             }}
@@ -220,7 +220,7 @@ export default function Counter() {
           {["커피", "차", "음료", "음식"].map((category) => (
             <button
               key={`button-${category}`}
-              className="h-16 relative bg-gray-200 focus:bg-gray-400 font-bold py-2 px-4 rounded-l-lg text-xl"
+              className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
               onClick={() => {
                 scrollToKey(category);
               }}
