@@ -234,6 +234,14 @@ export default function Counter() {
               {category}
             </button>
           ))}
+          <button
+            className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
+            onClick={() => {
+              handleGetMenu();
+            }}
+          >
+            메뉴 업데이트
+          </button>
         </div>
 
         <div
