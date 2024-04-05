@@ -211,7 +211,7 @@ export default function Counter() {
         {/* 카테고리별 버튼 렌더링 */}
         <div className="flex flex-col w-64">
           <button
-            className="h-16 relative bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-l-lg text-xl"
+            className="h-16 relative bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-l-lg text-lg"
             onClick={() => {
               setReceipt(true);
             }}
@@ -226,7 +226,7 @@ export default function Counter() {
           {["커피", "차", "음료", "음식"].map((category) => (
             <button
               key={`button-${category}`}
-              className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
+              className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-lg"
               onClick={() => {
                 scrollToKey(category);
               }}
@@ -235,7 +235,7 @@ export default function Counter() {
             </button>
           ))}
           <button
-            className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
+            className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-lg whitespace-normal"
             onClick={() => {
               handleGetMenu();
             }}
@@ -275,7 +275,7 @@ export default function Counter() {
                 {handleFilterMenu(category).map((menu) => (
                   <button
                     key={menu.menu_id}
-                    className="m-4 btn basis-1/5 grow-0 h-20 bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-2 px-4 rounded"
+                    className="m-4 btn basis-1/5 grow-0 h-20 bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-2 px-4 rounded whitespace-normal"
                     onClick={() => handleAddMenu(menu, 1)}
                   >
                     {menu.menu_name}
