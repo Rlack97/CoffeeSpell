@@ -19,7 +19,12 @@ const useMenuStore = create(
     (set) => ({
       menuItems: null, // 메뉴 정보를 담을 빈 배열
       setMenuItems: (menuItems: IMenuItem[] | null) =>
-        set(() => ({ menuItems })),
+        set(() => {
+          const newMenu = menuItems;
+          return {
+            menuItems: newMenu,
+          };
+        }),
     }),
     {
       name: "menuStorage",
