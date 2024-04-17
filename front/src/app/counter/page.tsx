@@ -242,6 +242,14 @@ export default function Counter() {
           >
             메뉴 업데이트
           </button>
+          <button
+            className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-lg whitespace-normal"
+            onClick={() => {
+              resetOrderItmes();
+            }}
+          >
+            주문정보 초기화
+          </button>
         </div>
 
         <div

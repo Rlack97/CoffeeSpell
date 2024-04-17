@@ -89,6 +89,11 @@ const useOrderStore = create(
           return { orderNum: increased };
         });
       },
+      resetOrderNum: () => {
+        set(() => {
+          return { orderNum: 1 };
+        });
+      },
     }),
     {
       name: "orderStorage",
