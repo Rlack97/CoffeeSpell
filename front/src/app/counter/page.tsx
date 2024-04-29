@@ -61,6 +61,7 @@ export default function Counter() {
       const apiUrl = "/api/menu";
       const response = await axios.get(apiUrl);
       setMenuItems(response.data.rows);
+      console.log("menu updated");
     } catch (error) {
       console.error("에러 발생:", error);
     }
