@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    const { rows } = await sql`SELECT * FROM menu`;
+    const { rows } = await sql`SELECT * FROM menu ORDER BY menu_id`;
 
     // 메뉴가 존재하지 않는 경우에도 그냥 빈 값을 전달
     // const menu = rows ?? [];

@@ -68,6 +68,7 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
       // 수정 동작 실행
     } else {
       // 수정 취소
+      alert("취소합니다.");
     }
     onClose();
   };
