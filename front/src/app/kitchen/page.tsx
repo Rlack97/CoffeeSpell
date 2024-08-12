@@ -126,7 +126,7 @@ export default function Kitchen() {
           >
             일일 마감
           </button>
-          <div className="relative text-center py-2 px-4 break-words">
+          <div className="relative text-center py-2 px-4 whitespace-normal">
             매출 : {income}원
           </div>
         </div>
@@ -140,10 +140,10 @@ export default function Kitchen() {
             orders.map((orderList, index) => (
               <div
                 key={index}
-                className="flex flex-shrink-0 bg-gray-100 rounded-md flex-col p-4"
+                className="flex flex-shrink-0 bg-gray-100 rounded-md flex-col p-4 gap-2"
               >
-                <h2 className="mb-1">{packing[index] ? "포장" : "매장"}</h2>
-                <h2 className="text-lg font-semibold mb-2">
+                <h2>{packing[index] ? "포장" : "매장"}</h2>
+                <h2 className="text-lg font-semibold">
                   {numList[index]}번 주문
                 </h2>
                 <ul className="space-y-2 grow flex flex-col flex-start">

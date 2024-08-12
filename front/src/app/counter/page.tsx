@@ -209,9 +209,9 @@ export default function Counter() {
         {/* 카테고리별 버튼 렌더링 */}
         <div className="flex flex-col w-64">
           <button
-            className="h-16 relative bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-l-lg text-lg"
+            className="h-16 relative bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-l-lg"
             style={{
-              fontSize: "clamp(0.5rem, 2vw, 1.125rem)",
+              fontSize: "clamp(0.875rem, 2vw, 1.125rem)",
               whiteSpace: "nowrap",
             }}
             onClick={() => {
@@ -228,7 +228,11 @@ export default function Counter() {
           {["커피", "차", "음료", "음식"].map((category) => (
             <button
               key={`button-${category}`}
-              className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-lg"
+              className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg "
+              style={{
+                fontSize: "clamp(0.875rem, 2vw, 1.125rem)",
+                whiteSpace: "nowrap",
+              }}
               onClick={() => {
                 scrollToKey(category);
               }}
@@ -237,7 +241,7 @@ export default function Counter() {
             </button>
           ))}
           <button
-            className="h-16 relative active:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-lg whitespace-normal"
+            className="h-16 relative active:bg-gray-200 font-bold py-2 px-4 rounded-l-lg "
             style={{
               fontSize: "clamp(0.5rem, 2vw, 1.125rem)",
               whiteSpace: "nowrap",
@@ -281,7 +285,11 @@ export default function Counter() {
                 {handleFilterMenu(category).map((menu) => (
                   <button
                     key={menu.menu_id}
-                    className="m-4 btn basis-1/5 grow-0 h-20 bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-2 px-4 rounded text-wrap"
+                    className="m-4 btn basis-1/5 grow-0 h-20 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                    style={{
+                      fontSize: "clamp(0.875rem, 2vw, 1.125rem)",
+                      whiteSpace: "normal",
+                    }}
                     onClick={() => handleAddMenu(menu, 1)}
                   >
                     {menu.menu_name}
