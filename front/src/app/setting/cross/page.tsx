@@ -49,7 +49,7 @@ export default function Cross() {
 
           <button
             className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
-            onClick={() => router.push("/income")}
+            onClick={() => router.push("/setting/income")}
           >
             매출 확인
           </button>

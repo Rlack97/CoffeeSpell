@@ -91,7 +91,6 @@ export default function Counter() {
   useLayoutEffect(() => {
     // 메뉴 불러오기
     handleGetMenu();
-    console.log("menu called");
   }, []);
 
   // 주문 보내기
