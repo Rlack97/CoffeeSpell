@@ -126,11 +126,11 @@ export default function Kitchen() {
           >
             일일 마감
           </button>
-          <div className="relative text-center py-2 px-4 whitespace-normal">
+          <div className="relative text-center py-2 px-4 text-wrap">
             매출 : {income}원
           </div>
         </div>
-        <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200 p-4 min-h-[80vh] items-center justify-center">
+        <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200 p-4 min-h-[80vh]">
           {orders.length === 0 ||
           (orders.length === 1 && orders[0].length === 0) ? (
             <div className="w-screen h-full flex p-4 rounded-md bg-gray-100 items-center justify-center">

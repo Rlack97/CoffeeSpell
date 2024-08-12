@@ -288,7 +288,7 @@ export default function Counter() {
                     className="m-4 btn basis-1/5 grow-0 h-20 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                     style={{
                       fontSize: "clamp(0.875rem, 2vw, 1.125rem)",
-                      whiteSpace: "normal",
+                      textWrap: "wrap",
                     }}
                     onClick={() => handleAddMenu(menu, 1)}
                   >
