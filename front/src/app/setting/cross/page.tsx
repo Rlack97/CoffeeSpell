@@ -28,13 +28,6 @@ export default function Cross() {
         <div className="flex flex-col space-y-4">
           <button
             className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
-            onClick={() => router.push("/setting/menu")}
-          >
-            관리
-          </button>
-
-          <button
-            className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
             onClick={() => router.push("/counter")}
           >
             카운터
@@ -45,6 +38,20 @@ export default function Cross() {
             onClick={() => router.push("/kitchen")}
           >
             주방
+          </button>
+
+          <button
+            className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+            onClick={() => router.push("/setting/menu")}
+          >
+            메뉴 관리
+          </button>
+
+          <button
+            className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+            onClick={() => router.push("/income")}
+          >
+            매출 확인
           </button>
         </div>
         <div

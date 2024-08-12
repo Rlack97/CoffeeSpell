@@ -1,5 +1,7 @@
 import { BiX } from "react-icons/bi";
 import { useState, useEffect } from "react";
+import axios from "axios";
+
 interface Menu {
   menu_id: number;
   menu_name: string;
@@ -59,6 +61,17 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
     }
     onClose();
   };
+
+  // async function handleUpdateMenu(id:string) {
+  //   try {
+  //     const apiUrl = `/api/menu/${id}`;
+  //     const response = await axios.get(apiUrl);
+  //     setMenuItems(response.data.rows);
+  //     console.log("menu updated");
+  //   } catch (error) {
+  //     console.error("에러 발생:", error);
+  //   }
+  // }
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

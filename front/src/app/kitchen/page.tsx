@@ -116,7 +116,7 @@ export default function Kitchen() {
             }}
             className="h-16 relative bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
           >
-            주문정보 초기화
+            주문 비우기
           </button>
           <button
             onClick={() => {
@@ -126,12 +126,14 @@ export default function Kitchen() {
           >
             일일 마감
           </button>
-          <div className="text-center">오늘 매출 : {income}원</div>
+          <div className="relative text-center py-2 px-4 break-words">
+            매출 : {income}원
+          </div>
         </div>
         <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200 p-4 min-h-[80vh]">
           {orders.length === 0 ||
           (orders.length === 1 && orders[0].length === 0) ? (
-            <div className="p-4 rounded-md bg-gray-100">
+            <div className="w-screen p-4 rounded-md bg-gray-100">
               <h2 className="text-lg font-semibold">들어온 주문이 없어요!</h2>
             </div>
           ) : (

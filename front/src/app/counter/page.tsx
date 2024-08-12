@@ -90,10 +90,8 @@ export default function Counter() {
 
   useLayoutEffect(() => {
     // 메뉴 불러오기
-    if (menuItems === null) {
-      handleGetMenu();
-      console.log("menu called");
-    }
+    handleGetMenu();
+    console.log("menu called");
   }, []);
 
   // 주문 보내기
@@ -238,18 +236,10 @@ export default function Counter() {
           <button
             className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-lg whitespace-normal"
             onClick={() => {
-              handleGetMenu();
-            }}
-          >
-            메뉴 업데이트
-          </button>
-          <button
-            className="h-16 relative focus:bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-lg whitespace-normal"
-            onClick={() => {
               resetOrderItmes();
             }}
           >
-            주문정보 초기화
+            주문번호 리셋
           </button>
         </div>
 
@@ -320,7 +310,7 @@ export default function Counter() {
                     />
                   </div>
                 )}
-                <li className="my-1">{menu.price * menu.quantity}</li>
+                <li className="my-1">{menu.price * menu.quantity}원</li>
 
                 <div className="flex flex-1 justify-between my-1 mb-2">
                   <button
@@ -342,7 +332,7 @@ export default function Counter() {
             ))}
           </ul>
           <div className="flex-end font-bold flex justify-between mb-2">
-            <div>합계</div> <div>{totalPrice()}</div>
+            <div>합계</div> <div>{totalPrice()}원</div>
           </div>
           <div className="flex-end flex justify-between">
             <button
