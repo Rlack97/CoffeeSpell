@@ -130,10 +130,10 @@ export default function Kitchen() {
             매출 : {income}원
           </div>
         </div>
-        <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200 p-4 min-h-[80vh]">
+        <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200 p-4 min-h-[85vh] max-h-[85vh] w-screen">
           {orders.length === 0 ||
           (orders.length === 1 && orders[0].length === 0) ? (
-            <div className="w-screen h-full flex p-4 rounded-md bg-gray-100 items-center justify-center">
+            <div className="w-screen h-full flex m-16 p-4 rounded-md bg-gray-100 items-center justify-center">
               <h2 className="text-lg font-semibold">들어온 주문이 없어요!</h2>
             </div>
           ) : (
