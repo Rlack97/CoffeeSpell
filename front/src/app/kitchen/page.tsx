@@ -151,7 +151,7 @@ export default function Kitchen() {
                   {orderList.map((orderItem, itemIndex) => (
                     <div key={itemIndex} className="flex flex-col items-start">
                       <div>{orderItem.ice && "아이스"}</div>
-                      <div className="flex items-center">
+                      <div className="flex">
                         <strong>{orderItem.name}</strong>
                         <span className="ml-auto">{orderItem.quantity}개 </span>
                       </div>
