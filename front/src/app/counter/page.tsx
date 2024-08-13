@@ -205,7 +205,7 @@ export default function Counter() {
         Coffee Spell
       </h1>
 
-      <div className="grow flex">
+      <div className="flex">
         {/* 카테고리별 버튼 렌더링 */}
         <div className="flex flex-col w-64">
           <button
@@ -256,7 +256,7 @@ export default function Counter() {
 
         <div
           id={"menulist"}
-          className="bg-gray-200 p-4 rounded-r-lg overflow-y-scroll flex flex-col max-h-[80vh]"
+          className="bg-gray-200 p-4 rounded-r-lg overflow-y-scroll flex flex-col max-h-[85vh]"
         >
           <div className="flex space-x-4 mb-3">
             <button
