@@ -281,11 +281,11 @@ export default function Counter() {
           {["커피", "차", "음료", "음식"].map((category) => (
             <div key={category} id={category} className="mb-4">
               <h2 className="text-xl font-semibold mb-2">{category}</h2>
-              <div className="flex flex-wrap">
+              <div className="grid grid-cols-4 gap-4 p-4">
                 {handleFilterMenu(category).map((menu) => (
                   <button
                     key={menu.menu_id}
-                    className="w-1/4 m-4 btn grow-0 h-20 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                     style={{
                       fontSize: "clamp(0.875rem, 2vw, 1.125rem)",
                       textWrap: "wrap",
