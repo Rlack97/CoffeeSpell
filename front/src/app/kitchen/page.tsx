@@ -140,7 +140,8 @@ export default function Kitchen() {
             orders.map((orderList, index) => (
               <div
                 key={index}
-                className="flex flex-shrink-0 bg-gray-100 rounded-md flex-col p-4 gap-2 overflow-y-scroll h-2/5 min-w-[20vw]"
+                className="flex flex-shrink-0 bg-gray-100 rounded-md flex-col p-4 gap-2 overflow-y-scroll h-2/5"
+                style={{ flexBasis: "calc(25% - 1rem)" }}
               >
                 <h2>{packing[index] ? "포장" : "매장"}</h2>
                 <h2 className="text-lg font-semibold">
