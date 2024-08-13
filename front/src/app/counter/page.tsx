@@ -285,7 +285,7 @@ export default function Counter() {
                 {handleFilterMenu(category).map((menu) => (
                   <button
                     key={menu.menu_id}
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                    className="break-keep h-20 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                     style={{
                       fontSize: "clamp(0.875rem, 2vw, 1.125rem)",
                       textWrap: "wrap",
