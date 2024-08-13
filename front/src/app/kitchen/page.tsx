@@ -140,13 +140,13 @@ export default function Kitchen() {
             orders.map((orderList, index) => (
               <div
                 key={index}
-                className="flex flex-shrink-0 bg-gray-100 rounded-md flex-col p-4 gap-2 w-12"
+                className="flex flex-shrink-0 bg-gray-100 rounded-md flex-col p-4 gap-3"
               >
                 <h2>{packing[index] ? "포장" : "매장"}</h2>
                 <h2 className="text-lg font-semibold">
                   {numList[index]}번 주문
                 </h2>
-                <ul className="space-y-2 grow flex flex-col flex-start">
+                <ul className="space-y-3 grow flex flex-col flex-start">
                   {orderList.map((orderItem, itemIndex) => (
                     <div key={itemIndex} className="flex items-center">
                       <strong>{orderItem.name}</strong>&nbsp;
