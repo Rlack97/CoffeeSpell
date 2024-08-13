@@ -130,23 +130,23 @@ export default function Kitchen() {
             매출 : {income}원
           </div>
         </div>
-        <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200 p-4 min-h-[85vh] max-h-[85vh] w-screen text-2xl">
+        <div className="flex flex-row gap-4 overflow-x-scroll bg-gray-200 p-4 min-h-[85vh] max-h-[85vh] w-screen">
           {orders.length === 0 ||
           (orders.length === 1 && orders[0].length === 0) ? (
             <div className="w-screen h-full flex p-4 rounded-md bg-gray-100 items-center justify-center">
-              <h2 className="font-semibold">들어온 주문이 없어요!</h2>
+              <h2 className="text-lg font-semibold">들어온 주문이 없어요!</h2>
             </div>
           ) : (
             orders.map((orderList, index) => (
               <div
                 key={index}
-                className="flex bg-gray-100 rounded-md flex-col p-4 gap-3"
+                className="flex flex-shrink-0 bg-gray-100 rounded-md flex-col p-4 gap-2"
               >
                 <h2>{packing[index] ? "포장" : "매장"}</h2>
-                <h2 className="text-4xl font-semibold">
+                <h2 className="text-lg font-semibold">
                   {numList[index]}번 주문
                 </h2>
-                <ul className="space-y-4 grow flex flex-col flex-start">
+                <ul className="space-y-2 grow flex flex-col flex-start">
                   {orderList.map((orderItem, itemIndex) => (
                     <div key={itemIndex} className="flex items-center">
                       <strong>{orderItem.name}</strong>&nbsp;
