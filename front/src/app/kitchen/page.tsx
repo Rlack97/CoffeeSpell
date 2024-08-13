@@ -149,10 +149,12 @@ export default function Kitchen() {
                 </h2>
                 <ul className="space-y-2 flex grow flex-col flex-start">
                   {orderList.map((orderItem, itemIndex) => (
-                    <div key={itemIndex} className="flex items-center">
+                    <div key={itemIndex} className="flex flex-col items-start">
                       <div>{orderItem.ice && "아이스"}</div>
-                      <strong>{orderItem.name}</strong>
-                      <span className="ml-auto">{orderItem.quantity}개 </span>
+                      <div className="flex items-center">
+                        <strong>{orderItem.name}</strong>
+                        <span className="ml-auto">{orderItem.quantity}개 </span>
+                      </div>
                     </div>
                   ))}
                 </ul>
