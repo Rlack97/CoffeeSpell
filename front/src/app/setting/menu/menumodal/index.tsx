@@ -1,5 +1,5 @@
 import { BiX } from "react-icons/bi";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import axios from "axios";
 
 interface Menu {
@@ -24,6 +24,14 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
   });
   const [title, setTitle] = useState("메뉴 정보 수정");
 
+  useLayoutEffect(() => {
+    if (menu) {
+      setTitle("메뉴 정보 수정");
+    } else {
+      setTitle("신 메뉴 등록");
+    }
+  });
+
   useEffect(() => {
     if (menu) {
       setFormData({
@@ -31,14 +39,12 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
         price: menu.menu_price.toString(),
         category: menu.menu_category,
       });
-      setTitle("메뉴 정보 수정");
     } else {
       setFormData({
         name: "",
         price: "",
         category: "",
       });
-      setTitle("신 메뉴 등록");
     }
   }, [menu]);
 
