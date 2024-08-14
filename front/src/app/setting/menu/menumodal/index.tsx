@@ -31,6 +31,7 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
         price: menu.menu_price.toString(),
         category: menu.menu_category,
       });
+      setTitle("메뉴 정보 수정");
     } else {
       setFormData({
         name: "",
