@@ -147,9 +147,9 @@ export default function Kitchen() {
                 <h2 className="text-lg font-semibold">
                   {numList[index]}번 주문
                 </h2>
-                <ul className="space-y-2 flex grow flex-col flex-start">
+                <ul className="space-y-2 flex grow flex-col">
                   {orderList.map((orderItem, itemIndex) => (
-                    <div key={itemIndex} className="flex flex-col items-start">
+                    <div key={itemIndex} className="flex flex-col">
                       <div>{orderItem.ice && "아이스"}</div>
                       <div className="flex">
                         <strong>{orderItem.name}</strong>
