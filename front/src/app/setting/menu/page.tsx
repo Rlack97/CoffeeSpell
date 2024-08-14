@@ -90,7 +90,7 @@ export default function Menu() {
               {handleFilterMenu(category).map((menu) => (
                 <button
                   key={menu.menu_id}
-                  className="m-4 btn w-64 h-20 bg-blue-500 hover:bg-blue-600 text-white break-keep font-bold py-2 px-4 rounded"
+                  className="h-20 bg-blue-500 hover:bg-blue-600 text-white break-keep font-bold py-2 px-4 rounded"
                   style={{
                     fontSize: "clamp(0.875rem, 2vw, 1.125rem)",
                     textWrap: "wrap",
