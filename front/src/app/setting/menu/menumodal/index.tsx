@@ -22,6 +22,7 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
     price: "",
     category: "",
   });
+  const [title, setTitle] = useState("메뉴 정보 수정");
 
   useEffect(() => {
     if (menu) {
@@ -36,6 +37,7 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
         price: "",
         category: "",
       });
+      setTitle("신 메뉴 등록");
     }
   }, [menu]);
 
@@ -117,8 +119,8 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
             >
               <BiX className="text-gray-600" />
             </button>
-            <h2 className="text-2xl font-semibold mb-4">메뉴 정보 수정</h2>
-            <form onSubmit={handleFormSubmit}>
+            <h2 className="text-2xl font-semibold mb-4">{title}</h2>
+            <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
               {/* 메뉴 이름 수정 폼 */}
               <div className="mb-4">
                 <label
