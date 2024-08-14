@@ -86,11 +86,15 @@ export default function Menu() {
         {["커피", "차", "음료", "음식"].map((category) => (
           <div key={category} className="mb-4">
             <h2 className="text-xl font-semibold mb-2">{category}</h2>
-            <div className="flex flex-wrap ">
+            <div className="grid grid-cols-4 gap-4 p-4">
               {handleFilterMenu(category).map((menu) => (
                 <button
                   key={menu.menu_id}
-                  className="m-4 btn w-64 h-20 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                  className="m-4 btn w-64 h-20 bg-blue-500 hover:bg-blue-600 text-white break-keep font-bold py-2 px-4 rounded"
+                  style={{
+                    fontSize: "clamp(0.875rem, 2vw, 1.125rem)",
+                    textWrap: "wrap",
+                  }}
                   onClick={() => handleEditMenu(menu)}
                 >
                   {menu.menu_name}
