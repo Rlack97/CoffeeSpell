@@ -114,7 +114,7 @@ export default function Kitchen() {
             onClick={() => {
               resetOrderItmes();
             }}
-            className="h-16 relative bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
+            className="break-keep h-16 relative bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
           >
             주문 비우기
           </button>
@@ -122,7 +122,7 @@ export default function Kitchen() {
             onClick={() => {
               completeDay();
             }}
-            className="h-16 relative bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
+            className="break-keep h-16 relative bg-gray-200 font-bold py-2 px-4 rounded-l-lg text-xl"
           >
             일일 마감
           </button>
