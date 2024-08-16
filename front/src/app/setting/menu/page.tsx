@@ -108,6 +108,7 @@ export default function Menu() {
         isOpen={isModalOpen}
         onClose={handleModalClose}
         menu={selectedMenu}
+        menuUpdate={handleGetMenu}
       />
     </div>
   );

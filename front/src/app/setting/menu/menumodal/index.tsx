@@ -15,9 +15,15 @@ interface MenuModalProps {
   isOpen: boolean;
   onClose: () => void;
   menu: Menu | null;
+  menuUpdate: () => void;
 }
 
-export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
+export default function MenuModal({
+  isOpen,
+  onClose,
+  menu,
+  menuUpdate,
+}: MenuModalProps) {
   const { user_pk } = useUserIdStore();
   const [formData, setFormData] = useState({
     name: "",
@@ -146,8 +152,10 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
         alert("취소합니다.");
       }
     } else {
+      // 전달값 없음 = 추가
       handleCreateMenu();
     }
+    menuUpdate();
     onClose();
     setFormData({
       name: "",
