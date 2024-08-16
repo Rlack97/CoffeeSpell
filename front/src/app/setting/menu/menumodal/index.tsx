@@ -1,5 +1,6 @@
 import { BiX } from "react-icons/bi";
 import { useState, useEffect, useLayoutEffect } from "react";
+import useUserIdStore from "@/app/hooks/useUserInfo";
 import axios from "axios";
 
 interface Menu {
@@ -17,6 +18,7 @@ interface MenuModalProps {
 }
 
 export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
+  const { user_pk } = useUserIdStore();
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -56,20 +58,47 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
     });
   };
 
-  const handleCreateMenu = () => {
-    // 메뉴 추가 기능 구현
-  };
+  // 메뉴 추가 기능
+  async function handleCreateMenu() {
+    const message = window.confirm("메뉴를 추가하시겠습니까?");
+    if (message) {
+      const apiUrl = "/api/menu/add";
+      try {
+        const sendData = {
+          menu_name: formData.name,
+          menu_price: formData.price,
+          menu_category: formData.category,
+          user_pk: user_pk,
+        };
+        const response = await axios.post(apiUrl, JSON.stringify(sendData), {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        alert("메뉴가 추가되었습니다.");
+        onClose();
+        setFormData({
+          name: "",
+          price: "",
+          category: "",
+        });
+      } catch (error) {
+        console.error("API 요청 중 오류 발생");
+      }
+    }
+  }
 
-  const handleDeleteMenu = () => {
-    // 메뉴 삭제 기능 구현
-    const result = confirm("메뉴를 삭제하시겠습니까?");
+  // 메뉴 삭제 기능 구현
+  async function handleDeleteMenu() {
+    const result = window.confirm("메뉴를 삭제하시겠습니까?");
     if (result) {
+      const apiUrl = "/api/menu/add";
       // 삭제 동작 실행
     } else {
       // 삭제 취소
     }
     onClose();
-  };
+  }
 
   // async function handleUpdateMenu(id:string) {
   //   try {
@@ -184,7 +213,7 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
                   type="submit"
                   className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                 >
-                  수정
+                  {menu ? "수정" : "추가"}
                 </button>
                 {menu && (
                   <button
