@@ -76,12 +76,6 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
           },
         });
         alert("메뉴가 추가되었습니다.");
-        onClose();
-        setFormData({
-          name: "",
-          price: "",
-          category: "",
-        });
       } catch (error) {
         console.error("API 요청 중 오류 발생");
       }
@@ -141,15 +135,25 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // 수정된 메뉴 정보를 서버로 전송하는 로직 추가
-    const result = confirm("메뉴 정보를 수정하시겠습니까?");
-    if (result) {
-      // 수정 동작 실행
+    // 전달받은 값이 있음 = 수정
+    if (menu) {
+      // 수정된 메뉴 정보를 서버로 전송하는 로직 추가
+      const result = confirm("메뉴 정보를 수정하시겠습니까?");
+      if (result) {
+        // 수정 동작 실행
+      } else {
+        // 수정 취소
+        alert("취소합니다.");
+      }
     } else {
-      // 수정 취소
-      alert("취소합니다.");
+      handleCreateMenu();
     }
     onClose();
+    setFormData({
+      name: "",
+      price: "",
+      category: "",
+    });
   };
 
   const handleModalClick = (
