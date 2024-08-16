@@ -92,10 +92,38 @@ export default function MenuModal({ isOpen, onClose, menu }: MenuModalProps) {
   async function handleDeleteMenu() {
     const result = window.confirm("메뉴를 삭제하시겠습니까?");
     if (result) {
-      const apiUrl = "/api/menu/add";
+      const apiUrl = `/api/menu/${menu?.menu_id}`;
       // 삭제 동작 실행
+      try {
+        const sendData = {
+          menu_id: menu?.menu_id,
+          user_pk: user_pk,
+        };
+        const response = await axios.delete(apiUrl, {
+          data: sendData,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        alert("메뉴가 삭제되었습니다.");
+        onClose();
+        setFormData({
+          name: "",
+          price: "",
+          category: "",
+        });
+      } catch (error) {
+        console.error("API 요청 중 오류 발생");
+      }
     } else {
       // 삭제 취소
+      alert("취소합니다.");
+      onClose();
+      setFormData({
+        name: "",
+        price: "",
+        category: "",
+      });
     }
     onClose();
   }
