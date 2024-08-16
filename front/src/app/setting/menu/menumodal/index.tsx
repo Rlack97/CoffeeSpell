@@ -81,9 +81,15 @@ export default function MenuModal({
             "Content-Type": "application/json",
           },
         });
+        // 요청이 성공적으로 반환되었을 때
+        if (response.status === 200) {
+          // 성공 상태 코드 확인
+          alert("메뉴가 추가되었습니다.");
+          menuUpdate(); // menuUpdate 함수 호출
+        }
         alert("메뉴가 추가되었습니다.");
       } catch (error) {
-        console.error("API 요청 중 오류 발생");
+        alert("API 요청 중 오류 발생");
       }
     }
   }
@@ -155,7 +161,6 @@ export default function MenuModal({
       // 전달값 없음 = 추가
       handleCreateMenu();
     }
-    menuUpdate();
     onClose();
     setFormData({
       name: "",
