@@ -8,7 +8,7 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control", // 응답 헤더의 키
-            value: "s-maxage=1, stale-while-revalidate=0", // 캐시 제어 값
+            value: "s-maxage=1, stale-while-revalidate=1", // 캐시 제어 값
           },
         ],
       },
