@@ -4,11 +4,11 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
   try {
     const { rows } = await sql`SELECT * FROM menu ORDER BY menu_id`;
+    const response = NextResponse.json({ rows }, { status: 200 });
+    // 캐시 비활성화
+    response.headers.set("Cache-Control", "no-store");
 
-    // 메뉴가 존재하지 않는 경우에도 그냥 빈 값을 전달
-    // const menu = rows ?? [];
-
-    return NextResponse.json({ rows }, { status: 200 });
+    return response;
   } catch (error) {
     console.error("에러 발생:", error);
     return NextResponse.json(
