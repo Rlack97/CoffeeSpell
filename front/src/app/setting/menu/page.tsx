@@ -34,7 +34,6 @@ export default function Menu() {
       const response = await axios.get(apiUrl, {
         headers: {
           "Content-Type": "application/json",
-          "Cache-Control": "no-store", // 캐시 방지 옵션
         },
       });
       console.log(response.data.rows);

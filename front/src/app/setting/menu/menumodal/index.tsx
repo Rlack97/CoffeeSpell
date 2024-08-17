@@ -110,7 +110,11 @@ export default function MenuModal({
             "Content-Type": "application/json",
           },
         });
-        alert("메뉴가 삭제되었습니다.");
+        if (response.status === 200) {
+          // 성공 상태 코드 확인
+          alert("메뉴가 삭제되었습니다.");
+          menuUpdate(); // menuUpdate 함수 호출
+        }
         onClose();
         setFormData({
           name: "",
