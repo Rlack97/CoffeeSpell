@@ -5,8 +5,6 @@ export async function GET(req: NextRequest) {
   try {
     const { rows } = await sql`SELECT * FROM menu ORDER BY menu_id`;
     const response = NextResponse.json({ rows }, { status: 200 });
-    // 캐시 비활성화
-    response.headers.set("Cache-Control", "no-store");
 
     return response;
   } catch (error) {

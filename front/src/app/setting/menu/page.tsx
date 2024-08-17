@@ -31,8 +31,12 @@ export default function Menu() {
   async function handleGetMenu() {
     try {
       const apiUrl = "/api/menu";
-      const response = await axios.get(apiUrl);
-      // console.log(response.data.rows);
+      const response = await axios.get(apiUrl, {
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store", // 캐시 방지 옵션
+        },
+      });
       setMenuItems(response.data.rows);
     } catch (error) {
       console.error("에러 발생:", error);
