@@ -87,7 +87,6 @@ export default function MenuModal({
           alert("메뉴가 추가되었습니다.");
           menuUpdate(); // menuUpdate 함수 호출
         }
-        alert("메뉴가 추가되었습니다.");
       } catch (error) {
         alert("API 요청 중 오류 발생");
       }

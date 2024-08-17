@@ -37,6 +37,7 @@ export default function Menu() {
           "Cache-Control": "no-store", // 캐시 방지 옵션
         },
       });
+      console.log(response.data.rows);
       setMenuItems(response.data.rows);
     } catch (error) {
       console.error("에러 발생:", error);
