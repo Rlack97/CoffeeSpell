@@ -4,7 +4,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/setting/menu/menumodal", // 설정할 페이지 경로
+        source: "/counter", // 설정할 페이지 경로
         headers: [
           {
             key: "Cache-Control", // 응답 헤더의 키
