@@ -4,15 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
   try {
     const { rows } = await sql`SELECT * FROM menu ORDER BY menu_id`;
-    const response = NextResponse.json(
-      { rows },
-      {
-        status: 200,
-        headers: {
-          "Cache-Control": "no-store", // 캐시 방지
-        },
-      }
-    );
+    const response = NextResponse.json({ rows }, { status: 200 });
 
     return response;
   } catch (error) {
