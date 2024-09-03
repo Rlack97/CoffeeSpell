@@ -153,18 +153,13 @@ export default function MenuModal({
   async function handleUpdateMenu(menu: Menu) {
     const message = window.confirm("메뉴 정보를 수정하시겠습니까?");
     if (message) {
-      if (!formData.category) {
-        alert("카테고리를 선택해 주세요");
-        return; // 카테고리가 비어있으면 함수 종료
-      }
-
       const apiUrl = `/api/menu/${menu.menu_id}`;
       try {
         const sendData = {
-          menu_id: menu.menu_id,
-          new_name: formData.name,
-          new_price: formData.price,
-          new_category: formData.category,
+          menu_id: menu?.menu_id,
+          menu_name: formData.name,
+          menu_price: formData.price,
+          menu_category: formData.category,
           user_pk: user_pk,
         };
         const response = await axios.post(apiUrl, JSON.stringify(sendData), {
@@ -315,6 +310,3 @@ export default function MenuModal({
     </>
   );
 }
-
-// 추가 필요
-// 메뉴 추가 / 수정 / 삭제 로직 (db 및 zustand 데이터 변경)

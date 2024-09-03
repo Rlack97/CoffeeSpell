@@ -27,7 +27,7 @@ export async function DELETE(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const { menu_id, user_pk, new_name, new_price, new_category } =
+    const { menu_id, user_pk, menu_name, menu_price, menu_category } =
       await req.json();
     const number_id = parseInt(menu_id, 10);
     const number_pk = parseInt(user_pk, 10);
@@ -41,9 +41,9 @@ export async function POST(req: NextRequest) {
 
     // 새 정보가 올바른지 확인
     if (
-      typeof new_name !== "string" ||
-      typeof new_price !== "number" ||
-      typeof new_category !== "string"
+      typeof menu_name !== "string" ||
+      typeof menu_price !== "number" ||
+      typeof menu_category !== "string"
     ) {
       return NextResponse.json(
         { error: "새 정보가 올바르지 않습니다." },
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
 
     await sql`
       UPDATE menu
-      SET name = ${new_name}, price = ${new_price}, category = ${new_category}
+      SET menu_name = ${menu_name}, menu_price = ${menu_price}, menu_category = ${menu_category}
       WHERE menu_id = ${number_id} AND user_pk = ${number_pk}
     `;
     return NextResponse.json({ message: "메뉴 수정 성공" }, { status: 200 });
