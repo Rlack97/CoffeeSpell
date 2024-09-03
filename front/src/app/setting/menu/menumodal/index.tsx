@@ -153,7 +153,7 @@ export default function MenuModal({
   async function handleUpdateMenu(menu: Menu) {
     const message = window.confirm("메뉴 정보를 수정하시겠습니까?");
     if (message) {
-      if (!formData.category.trim()) {
+      if (!formData.category) {
         alert("카테고리를 선택해 주세요");
         return; // 카테고리가 비어있으면 함수 종료
       }
