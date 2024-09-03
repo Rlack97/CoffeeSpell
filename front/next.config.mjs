@@ -1,14 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   async headers() {
     return [
       {
-        source: "/counter", // 설정할 페이지 경로
+        source: '/counter',
         headers: [
           {
-            key: "Cache-Control", // 응답 헤더의 키
-            value: "s-maxage=1, stale-while-revalidate=1", // 캐시 제어 값
+            key: 'Cache-Control',
+            value: 's-maxage=60, stale-while-revalidate=59', // 캐시를 60초 동안 유지하고 그 이후에 재검증
+          },
+        ],
+      },
+      {
+        source: '/setting',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store', // 캐시 사용 안 함
           },
         ],
       },
