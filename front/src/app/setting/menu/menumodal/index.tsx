@@ -260,15 +260,15 @@ export default function MenuModal({
                   name="category"
                   value={formData.category}
                   onChange={handleSelectChange}
-                  className="bg-gray-200 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-base border-gray-300 rounded-md py-2 px-4"
+                  className="bg-gray-200 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-base border-gray-300 rounded-md py-2 px-4 w-full"
                 >
                   <option value="" disabled>
                     카테고리 선택
                   </option>
-                  <option value="coffee">커피</option>
-                  <option value="tea">차</option>
-                  <option value="beverage">음료</option>
-                  <option value="food">음식</option>
+                  <option value="커피">커피</option>
+                  <option value="차">차</option>
+                  <option value="음료">음료</option>
+                  <option value="음식">음식</option>
                 </select>
               </div>
               <div className="flex justify-end">
