@@ -145,29 +145,38 @@ export default function MenuModal({
     onClose();
   }
 
-  // async function handleUpdateMenu(id:string) {
-  //   try {
-  //     const apiUrl = `/api/menu/${id}`;
-  //     const response = await axios.get(apiUrl);
-  //     setMenuItems(response.data.rows);
-  //     console.log("menu updated");
-  //   } catch (error) {
-  //     console.error("에러 발생:", error);
-  //   }
-  // }
+  async function handleUpdateMenu(menu: Menu) {
+    const message = window.confirm("메뉴 정보를 수정하시겠습니까?");
+    if (message) {
+      const apiUrl = `/api/menu/${menu.menu_id}`;
+      try {
+        const sendData = {
+          new_name: formData.name,
+          new_price: formData.price,
+          new_category: formData.category,
+          user_pk: user_pk,
+        };
+        const response = await axios.post(apiUrl, JSON.stringify(sendData), {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.status === 200) {
+          alert("메뉴가 수정되었습니다.");
+          menuUpdate();
+        }
+      } catch (error) {
+        alert("API 요청 중 오류 발생");
+      }
+    }
+  }
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // 전달받은 값이 있음 = 수정
     if (menu) {
       // 수정된 메뉴 정보를 서버로 전송하는 로직 추가
-      const result = confirm("메뉴 정보를 수정하시겠습니까?");
-      if (result) {
-        // 수정 동작 실행
-      } else {
-        // 수정 취소
-        alert("취소합니다.");
-      }
+      handleUpdateMenu(menu);
     } else {
       // 전달값 없음 = 추가
       handleCreateMenu();
@@ -260,7 +269,7 @@ export default function MenuModal({
                   name="category"
                   value={formData.category}
                   onChange={handleSelectChange}
-                  className="bg-gray-200 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-base border-gray-300 rounded-md py-2 px-4 w-full"
+                  className="bg-gray-200 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-base border-gray-300 rounded-md py-2 px-4"
                 >
                   <option value="" disabled>
                     카테고리 선택
