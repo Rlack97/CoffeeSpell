@@ -1,6 +1,9 @@
 import { sql } from "@vercel/postgres";
 import { NextRequest, NextResponse } from "next/server";
+
+// 캐시 없애는 코드. 대체 이놈때문에 얼마나 진척이 막혔는데!!!
 export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const { rows } = await sql`SELECT * FROM menu ORDER BY menu_id`;

@@ -36,7 +36,6 @@ export default function Menu() {
           "Content-Type": "application/json",
         },
       });
-      console.log(response.data.rows);
       setMenuItems(response.data.rows);
     } catch (error) {
       console.error("에러 발생:", error);

@@ -209,7 +209,7 @@ export default function MenuModal({
               <div className="mb-4">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-base font-medium text-gray-700"
                 >
                   메뉴 이름
                 </label>
@@ -219,14 +219,14 @@ export default function MenuModal({
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-base border-gray-300 rounded-md"
                 />
               </div>
               {/* 메뉴 가격 수정 폼 */}
               <div className="mb-4">
                 <label
                   htmlFor="price"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-base font-medium text-gray-700"
                 >
                   메뉴 가격
                 </label>
@@ -236,14 +236,14 @@ export default function MenuModal({
                   name="price"
                   value={formData.price}
                   onChange={handleInputChange}
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-base border-gray-300 rounded-md"
                 />
               </div>
               {/* 메뉴 카테고리 수정 폼 */}
               <div className="mb-4">
                 <label
                   htmlFor="category"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-base font-medium text-gray-700"
                 >
                   메뉴 카테고리
                 </label>
@@ -253,7 +253,7 @@ export default function MenuModal({
                   name="category"
                   value={formData.category}
                   onChange={handleInputChange}
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-base border-gray-300 rounded-md"
                 />
               </div>
               <div className="flex justify-end">
