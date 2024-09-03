@@ -64,6 +64,14 @@ export default function MenuModal({
     });
   };
 
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
   // 메뉴 추가 기능
   async function handleCreateMenu() {
     const message = window.confirm("메뉴를 추가하시겠습니까?");
@@ -247,14 +255,21 @@ export default function MenuModal({
                 >
                   메뉴 카테고리
                 </label>
-                <input
-                  type="text"
+                <select
                   id="category"
                   name="category"
                   value={formData.category}
-                  onChange={handleInputChange}
+                  onChange={handleSelectChange}
                   className="bg-gray-200 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-base border-gray-300 rounded-md py-2 px-4"
-                />
+                >
+                  <option value="" disabled>
+                    카테고리 선택
+                  </option>
+                  <option value="coffee">커피</option>
+                  <option value="tea">차</option>
+                  <option value="beverage">음료</option>
+                  <option value="food">음식</option>
+                </select>
               </div>
               <div className="flex justify-end">
                 <button

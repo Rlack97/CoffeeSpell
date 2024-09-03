@@ -77,9 +77,9 @@ export default function Menu() {
         <BiSolidCoffeeBean className="mr-2" />
         Coffee Spell
       </h1>
-      <div className="mb-4">
+      <div>
         <button
-          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2"
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-t-md rounded-b-none mr-2"
           onClick={handleAddMenu}
         >
           메뉴 추가
