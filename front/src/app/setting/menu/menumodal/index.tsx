@@ -151,6 +151,7 @@ export default function MenuModal({
       const apiUrl = `/api/menu/${menu.menu_id}`;
       try {
         const sendData = {
+          menu_id: menu.menu_id,
           new_name: formData.name,
           new_price: formData.price,
           new_category: formData.category,
