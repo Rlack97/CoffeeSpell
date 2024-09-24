@@ -358,6 +358,8 @@ export default function Counter() {
             >
               닫기
             </button>
+          </div>
+          <div className="flex-end">
             <button
               className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 ml-1 rounded"
               onClick={() => {
