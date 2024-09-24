@@ -349,7 +349,7 @@ export default function Counter() {
           <div className="flex-end font-bold flex justify-between mb-2">
             <div>합계</div> <div>{totalPrice()}원</div>
           </div>
-          <div className="flex-end flex justify-between">
+          <div className="flex-end mb-2">
             <button
               className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 mr-1 rounded"
               onClick={() => {
