@@ -327,17 +327,17 @@ export default function Counter() {
                 )}
                 <li className="my-1">{menu.price * menu.quantity}원</li>
 
-                <div className="flex flex-1 justify-between my-1 mb-2">
+                <div className="flex flex-1 justify-between items-center my-1 mb-2">
                   <button
                     onClick={() => decreaseQuantity(index)}
-                    className="bg-gray-200 rounded-l px-2"
+                    className="bg-gray-200 rounded-l p-4 text-2xl"
                   >
                     -
                   </button>
-                  <li className="px-2">{menu.quantity}개</li>
+                  <li className="p-4 text-2xl">{menu.quantity}개</li>
                   <button
                     onClick={() => increaseQuantity(index)}
-                    className="bg-gray-200 rounded-r px-2"
+                    className="bg-gray-200 rounded-r p-4 text-2xl"
                   >
                     +
                   </button>
